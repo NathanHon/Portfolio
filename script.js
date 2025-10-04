@@ -299,7 +299,7 @@ function renderResume() {
         data="assets/resume.pdf"
         type="application/pdf"
         width="100%"
-        height="1122px"
+        height="1124px"
         style="display:block; width:100%;"
       >
         <p style="padding:16px">
