@@ -123,7 +123,7 @@ function renderPortfolio() {
   `;
 }
 
-function renderAviation() {
+function renderWork() {
   const cards = [1,2,3].map(n => `
     <article class="card">
       <div class="card-media"><img src="assets/aviation.jpg" alt="Aviation project ${n}"></div>
