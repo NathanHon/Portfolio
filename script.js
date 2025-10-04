@@ -223,13 +223,6 @@ function renderWork() {
   `;
 }
 
-const crumb = `<p class="prose" style="margin:8px 0 0"><a href="#/work">Work</a> / ${item.title}</p>`;
-return `
-  ${pageTitle(item.title)}
-  ${crumb}
-  ...
-`;
-
 function renderWorkDetail(slug) {
   const item = WORK_ITEMS.find(w => w.slug === slug);
   if (!item) {
@@ -244,8 +237,13 @@ function renderWorkDetail(slug) {
     <a class="pill" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>
   `).join("");
 
+  const crumb = `<p class="prose" style="margin:8px 0 0">
+  <a href="#/work">Work</a> / ${item.title}
+  </p>`;
+  
   return `
     ${pageTitle(item.title)}
+    ${crumb}
     <div class="grid" style="grid-template-columns: 1fr; gap:24px">
       <div class="card">
         <div class="card-media" style="aspect-ratio:16/9">
