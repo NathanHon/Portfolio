@@ -296,13 +296,13 @@ function renderAbout() {
   return `
     ${pageTitle("About")}
     <div class="grid" style="
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1.5fr 2fr;
       align-items: start;
       gap: 32px;
     ">
       <div class="card" style="align-self: start;">
         <div class="card-media" style="aspect-ratio:1/1;">
-          <img src="assets/portrait.png" alt="Portrait of Nathan">
+          <img src="assets/portrait.jpg" alt="Portrait of Nathan">
         </div>
       </div>
       <div class="prose">
