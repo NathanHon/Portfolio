@@ -316,14 +316,13 @@ function renderResume() {
       <p><a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Open Resume (PDF)</a></p>
     </div>
 
-    <!-- NEW wrapper with a class we’ll size via CSS -->
     <div class="resume-card">
       <div class="resume-viewport">
         <object
           data="assets/resume.pdf"
           type="application/pdf"
           width="100%"
-          height="100%"              <!-- <- let CSS control the height -->
+          height="100%"
           style="display:block; width:100%;"
         >
           <p style="padding:16px">
@@ -335,6 +334,7 @@ function renderResume() {
     </div>
   `;
 }
+
 
 function renderAbout() {
   return `
