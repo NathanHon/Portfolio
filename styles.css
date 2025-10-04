@@ -109,3 +109,18 @@ a:hover{text-decoration:underline}
     height: 800px !important;
   }
 }
+/* Desktop/default height for the PDF viewport */
+.resume-viewport {
+  height: 1000px; /* adjust for desktop if you want */
+}
+
+/* On phones, use short viewport units so it isn't super long */
+@media (max-width: 768px) {
+  .resume-viewport {
+    height: 70svh;     /* better than vh on mobile; accounts for browser chrome */
+  }
+  .resume-card object[type="application/pdf"] {
+    height: 100%;      /* match the wrapper height */
+    width: 100%;
+  }
+}
