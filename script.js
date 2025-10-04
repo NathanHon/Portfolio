@@ -173,6 +173,7 @@ function splitRoute() {
 }
 
 function setActiveNav() {
+  const curr = currentRoute();
   document.querySelectorAll("[data-route]").forEach((a) => {
     const r = a.getAttribute("href").replace(/^#\/?/, "").toLowerCase();
     if (r === currentRoute()) a.classList.add("active");
