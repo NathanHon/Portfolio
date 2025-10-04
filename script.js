@@ -8,7 +8,7 @@ const WORK_ITEMS = [
   {
     slug: "harbinger-product",
     title: "Harbinger Motors — Product Engineering Intern",
-    img: "assets/p5.jpg",
+    img: "assets/harbinger1.jpg",
     summary: "Supported product development and validation of electric powertrain subassemblies.",
     details: `
       • Assisted in design, FEA, and GD&T documentation of inverter and gearbox subassemblies.<br>
@@ -23,7 +23,7 @@ const WORK_ITEMS = [
   {
     slug: "harbinger-powertrain",
     title: "Harbinger Motors — Powertrain Engineering Intern",
-    img: "assets/p1.jpg",
+    img: "assets/harbinger2.jpg",
     summary: "Developed and validated electric drive unit components for next-generation medium-duty EVs.",
     details: `
       • Performed non-linear static FEA in HyperMesh to optimize powertrain structures for weight and cost.<br>
@@ -38,7 +38,7 @@ const WORK_ITEMS = [
   {
     slug: "raytheon",
     title: "Raytheon Technologies — Mechanical Design Co-op",
-    img: "assets/p2.jpg",
+    img: "assets/raytheon.jpg",
     summary: "Supported mechanical design and FEA validation of defense-grade thermal and structural systems.",
     details: `
       • Modeled and analyzed complex assemblies for thermal endurance and vibration performance.<br>
@@ -53,7 +53,7 @@ const WORK_ITEMS = [
   {
     slug: "bmw",
     title: "BMW Group — Product Engineering Intern",
-    img: "assets/p3.jpg",
+    img: "assets/bmw.jpg",
     summary: "Implemented additive manufacturing tools into the vehicle assembly line process.",
     details: `
       • Designed and validated 3D printed assembly tools to improve ergonomics and reduce build time.<br>
@@ -68,7 +68,7 @@ const WORK_ITEMS = [
   {
     slug: "swap",
     title: "Swap Robotics — Mechanical Engineering Intern",
-    img: "assets/p4.jpg",
+    img: "assets/swapRobotics.jpg",
     summary: "Contributed to mechanical design and testing for autonomous electric mowers and snow-removal robots.",
     details: `
       • Designed drivetrain and steering subassemblies for modular robotic platforms.<br>
