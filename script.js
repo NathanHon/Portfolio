@@ -185,11 +185,15 @@ function render() {
   setActiveNav();
   const { base, parts } = splitRoute();
 
+  // Toggle full-width container for resume only
+  if (base === "resume") app.classList.add("wide");
+  else app.classList.remove("wide");
+
   // dynamic detail: #/work/<slug>
   if (base === "work" && parts.length === 2) {
-    app.innerHTML = renderWorkDetail(parts[1]); // parts[1] is the slug
+    app.innerHTML = renderWorkDetail(parts[1]);
     window.scrollTo(0,0);
-    bindProjectClicks(); // safe no-op here
+    bindProjectClicks();
     return;
   }
 
@@ -280,13 +284,30 @@ function renderWorkDetail(slug) {
 function renderResume() {
   return `
     ${pageTitle("Resume","Download or view the PDF below")}
-    <div class="prose">
+    <div class="prose" style="padding:0 16px;">
       <p><a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Open Resume (PDF)</a></p>
     </div>
-    <div class="resume-wrap">
-      <div class="resume-card">
-        <object data="assets/resume.pdf" type="application/pdf" width="100%" height="1120px"></object>
-      </div>
+    <div style="
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      overflow:hidden;
+      background:#fff;
+      width:100%;
+      max-width:100%;
+    ">
+      <object
+        data="assets/resume.pdf"
+        type="application/pdf"
+        width="100%"
+        height="1120px"
+        style="display:block; width:100%; max-width:100%;"
+      >
+        <p style="padding:16px">
+          Your browser can't display embedded PDFs.
+          <a href="assets/resume.pdf" target="_blank" rel="noopener">Click here to download.</a>
+        </p>
+      </object>
     </div>
   `;
 }
