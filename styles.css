@@ -73,7 +73,7 @@ a:hover{text-decoration:underline}
 /* Put this at the very bottom of styles.css */
 #app.wide {
   width: 80vw !important;
-  max-width: 800 !important;
+  max-width: 800px !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
   padding-left: 0 !important;
