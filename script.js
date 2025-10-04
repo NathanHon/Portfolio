@@ -205,21 +205,61 @@ function renderPortfolio() {
 }
 
 function renderWork() {
-  const cards = [1,2,3].map(n => `
+  const cards = WORK_ITEMS.map(w => `
     <article class="card">
-      <div class="card-media"><img src="assets/p1.jpg" alt="Work item ${n}"></div>
-      <div class="card-body">
-        <h3>Work Item ${n}</h3>
-        <p>Short description and key outcomes.</p>
-      </div>
+      <a href="#/work/${w.slug}">
+        <div class="card-media"><img src="${w.img}" alt="${w.title}"></div>
+        <div class="card-body">
+          <h3>${w.title}</h3>
+          <p>${w.summary}</p>
+        </div>
+      </a>
     </article>
   `).join("");
+
   return `
     ${pageTitle("Work Experience","Selected roles and projects")}
-    <div class="prose">
-      <p>Highlights from internships and roles across powertrain, manufacturing, and test.</p>
+    <div class="grid" style="margin-top:4px">${cards}</div>
+  `;
+}
+
+const crumb = `<p class="prose" style="margin:8px 0 0"><a href="#/work">Work</a> / ${item.title}</p>`;
+return `
+  ${pageTitle(item.title)}
+  ${crumb}
+  ...
+`;
+
+function renderWorkDetail(slug) {
+  const item = WORK_ITEMS.find(w => w.slug === slug);
+  if (!item) {
+    return `
+      ${pageTitle("Work Experience")}
+      <p class="prose">Sorry, that work item was not found.</p>
+      <p><a class="pill" href="#/work">Back to Work Experience</a></p>
+    `;
+  }
+
+  const links = (item.links || []).map(l => `
+    <a class="pill" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>
+  `).join("");
+
+  return `
+    ${pageTitle(item.title)}
+    <div class="grid" style="grid-template-columns: 1fr; gap:24px">
+      <div class="card">
+        <div class="card-media" style="aspect-ratio:16/9">
+          <img src="${item.img}" alt="${item.title}">
+        </div>
+      </div>
+      <div class="prose">
+        <p>${item.details}</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+          ${links}
+          <a class="pill" href="#/work">← Back to Work</a>
+        </div>
+      </div>
     </div>
-    <div class="grid" style="margin-top:16px">${cards}</div>
   `;
 }
 
