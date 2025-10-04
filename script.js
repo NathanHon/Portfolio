@@ -184,12 +184,9 @@ function splitRoute() {
 function setActiveNav() {
   const curr = currentRoute();
   document.querySelectorAll("[data-route]").forEach(a => {
-    const r = a.getAttribute("href").replace(/^#\/?/, "").toLowerCase();
-    if ((r === "" && curr === "portfolio") || curr === r) {
-      a.classList.add("active");
-    } else {
-      a.classList.remove("active");
-    }
+    const target = a.getAttribute("href").replace(/^\/+|\/+$/g, "") || "portfolio";
+    if (curr === target || curr.startsWith(target + "/")) a.classList.add("active");
+    else a.classList.remove("active");
   });
 }
 
