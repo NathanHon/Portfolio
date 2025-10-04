@@ -72,8 +72,8 @@ a:hover{text-decoration:underline}
 /* Make the #app container go full-width only when we add the .wide class */
 /* Put this at the very bottom of styles.css */
 #app.wide {
-  width: 100vw !important;
-  max-width: none !important;
+  width: 80vw !important;
+  max-width: 800 !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
   padding-left: 0 !important;
