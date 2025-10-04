@@ -167,8 +167,7 @@ function renderAbout() {
       </div>
       <div class="prose">
         <h2 style="margin-top:0">Hi, I’m Nathan.</h2>
-        <p>I build mechanical and mechatronic systems—vehicle dynamics, powertrain, test rigs, and simulation-driven design. I’ve worked on Baja SAE, assembly-line 3D printing integration at BMW, and powertrain engineering at Harbinger Motors.</p>
-        <p>I like minimal, serviceable designs and validating ideas quickly with bench testing, instrumentation, and FEA.</p>
+        <p>I am a mechanical engineering student with proven experience in product development, powertrain engineering, and manufacturing optimization. Through internships at Harbinger Motors, Raytheon Technologies, and BMW Manufacturing, I have developed expertise in CAD design, FEA simulation, thermal analysis, and process improvement. I excel at identifying failure modes, implementing design solutions, and leading cross-functional teams to deliver measurable results including significant cost savings and cycle time reductions.</p>
         <ul>
           <li><a href="#" class="underline">Resume (PDF)</a></li>
           <li><a href="#" class="underline">LinkedIn</a></li>
