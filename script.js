@@ -285,7 +285,7 @@ function renderResume() {
     </div>
     <div class="resume-wrap">
       <div class="resume-card">
-        <object data="assets/resume.pdf" type="application/pdf" width="100%" height="1120px"></object>
+        <object data="assets/resume.pdf" type="application/pdf" width="100%" height="600px"></object>
       </div>
     </div>
   `;
