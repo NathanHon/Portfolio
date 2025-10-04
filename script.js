@@ -295,14 +295,23 @@ function renderResume() {
 function renderAbout() {
   return `
     ${pageTitle("About")}
-    <div class="grid" style="grid-template-columns: 1fr; gap:24px">
-      <div class="card">
-        <div class="card-media" style="aspect-ratio:1/1"><img src="assets/portrait.jpg" alt="Portrait of Nathan"></div>
+    <div class="grid" style="
+      grid-template-columns: 1fr 2fr;
+      align-items: start;
+      gap: 32px;
+    ">
+      <div class="card" style="align-self: start;">
+        <div class="card-media" style="aspect-ratio:1/1;">
+          <img src="assets/portrait.png" alt="Portrait of Nathan">
+        </div>
       </div>
       <div class="prose">
         <h2 style="margin-top:0">Hi, I’m Nathan.</h2>
-        <p>I am a mechanical engineering student with proven experience in product development, powertrain engineering, and manufacturing optimization. Through internships at Harbinger Motors, Raytheon Technologies, and BMW Manufacturing, I have developed expertise in CAD design, FEA simulation, thermal analysis, and process improvement. I excel at identifying failure modes, implementing design solutions, and leading cross-functional teams to deliver measurable results including significant cost savings and cycle time reductions.</p>
-        <div style="display:flex;gap:48px;flex-wrap:wrap;margin-top:12px">
+        <p>I’m a Mechanical Engineering student who builds mechanical and mechatronic systems—vehicle dynamics, powertrain, test rigs, and simulation-driven design.</p>
+        <p>Experience includes Baja SAE, implementing 3D printing on the assembly line at BMW, and powertrain engineering at Harbinger Motors. I enjoy minimal, serviceable designs and validating ideas quickly through bench testing, instrumentation, and FEA.</p>
+
+        <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:16px">
+          <a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
           <a class="pill" href="https://www.linkedin.com/in/nathanhon/" target="_blank" rel="noopener">LinkedIn</a>
           <a class="pill" href="mailto:nthon@uwaterloo.ca">Email me</a>
         </div>
