@@ -126,22 +126,17 @@ function renderPortfolio() {
 function renderWork() {
   const cards = [1,2,3].map(n => `
     <article class="card">
-      <div class="card-media"><img src="assets/aviation.jpg" alt="Aviation project ${n}"></div>
+      <div class="card-media"><img src="assets/p1.jpg" alt="Work item ${n}"></div>
       <div class="card-body">
-        <h3>Aviation Project ${n}</h3>
+        <h3>Work Item ${n}</h3>
         <p>Short description and key outcomes.</p>
       </div>
     </article>
   `).join("");
   return `
-    ${pageTitle("Aviation","Aerospace and flight-adjacent projects")}
+    ${pageTitle("Work Experience","Selected roles and projects")}
     <div class="prose">
-      <p>Highlight flight-related builds and research—airframes, avionics, control systems, or propulsion.</p>
-      <ul>
-        <li>UAV airframe concepts with weight/balance breakdown</li>
-        <li>Propeller/EDF trade studies and performance maps</li>
-        <li>Flight computer stack and wiring harness drawings</li>
-      </ul>
+      <p>Highlights from internships and roles across powertrain, manufacturing, and test.</p>
     </div>
     <div class="grid" style="margin-top:16px">${cards}</div>
   `;
