@@ -167,9 +167,11 @@ const routes = {
 };
 
 function currentRoute() {
-  const hash = location.hash.replace(/^#\/?/, "");
-  // Default to 'portfolio' when there’s no hash in the URL
-  return hash || "portfolio";
+  // Use path-based routing instead of hash
+  const path = location.pathname.replace(/^\/+|\/+$/g, ""); // remove leading/trailing slashes
+  const base = "portfolio"; // your repo name on GitHub Pages
+  const clean = path.replace(new RegExp("^" + base + "/?"), ""); // remove "portfolio/" prefix
+  return clean || "portfolio";
 }
 
 function splitRoute() {
@@ -213,7 +215,18 @@ function render() {
   window.scrollTo(0,0);
 }
 
-window.addEventListener("hashchange", render);
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a[href^='/']"); // only internal links
+  if (link && !link.target) {
+    e.preventDefault();
+    const path = link.getAttribute("href");
+    history.pushState({}, "", path);
+    render();
+  }
+});
+
+
+window.addEventListener("popstate", render); // back/forward navigation
 window.addEventListener("load", render);
 
 // Views
