@@ -294,14 +294,13 @@ function renderResume() {
       overflow:hidden;
       background:#fff;
       width:100%;
-      max-width:100%;
     ">
       <object
         data="assets/resume.pdf"
         type="application/pdf"
         width="100%"
         height="1120px"
-        style="display:block; width:100%; max-width:100%;"
+        style="display:block; width:100%;"
       >
         <p style="padding:16px">
           Your browser can't display embedded PDFs.
