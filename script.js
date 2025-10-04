@@ -143,13 +143,14 @@ function renderWork() {
 }
 
 function renderResume() {
+  const embedHeight = "calc(100vh - 160px)";
   return `
     ${pageTitle("Resume","Download or view the PDF below")}
     <div class="prose">
       <p><a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Open Resume (PDF)</a></p>
     </div>
-    <div style="margin-top:16px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff">
-      <object data="assets/resume.pdf" type="application/pdf" width="100%" height="1800px">
+    <div style="margin-top:16px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; height:${embedHeight}">
+      <object data="assets/resume.pdf" type="application/pdf" width="100%" height="100%">
         <p style="padding:16px">Your browser can't display embedded PDFs.
           <a href="assets/resume.pdf" target="_blank" rel="noopener">Click here to download.</a>
         </p>
