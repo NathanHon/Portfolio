@@ -1,22 +1,83 @@
-// Vanilla JS hash router for GitHub Pages
+// Simple hash router + content rendering (no frameworks)
 const app = document.getElementById("app");
 const yearEl = document.getElementById("year");
 yearEl.textContent = new Date().getFullYear();
 
-// Data
+// Fake data — replace with your real projects
 const PROJECTS = [
-  { id: "msa", title: "Maritime Surveillance Aircraft", img: "assets/p1.jpg", tags: ["concept","systems","cad"], summary: "Concept study and structural layout.", details: "Defined mission requirements, weight estimation, payload bay hardpoints.", links: ["#","#"] },
-  { id: "breakerbot", title: "BreakerBot", img: "assets/p2.jpg", tags: ["robotics","manufacturing"], summary: "Compact combat robot with reliable drivetrain.", details: "Modular armor, BLDC drivetrain, FEA validation.", links: ["#","#"] },
-  { id: "gearbox", title: "Planetary Gearbox", img: "assets/p3.jpg", tags: ["cad","fea"], summary: "Mass/stiffness-optimized planetary set.", details: "AGMA checks, modal analysis, dye-penetrant validation.", links: ["#","#"] },
-  { id: "truss", title: "Truss Analysis & Optimization", img: "assets/p4.jpg", tags: ["structures","optimization"], summary: "Parametric truss optimizer.", details: "Euler buckling margins, sensitivity-based sizing.", links: ["#","#"] },
-  { id: "pneumatic-brake", title: "Pneumatic Brake Module", img: "assets/p5.jpg", tags: ["mechatronics","safety"], summary: "Fail-safe pneumatic brake module.", details: "Leak-down detection, redundant relief per ISO 4414.", links: ["#","#"] },
-  { id: "mode-converter", title: "Microbend Mode Converter", img: "assets/p6.jpg", tags: ["photonics","test"], summary: "Fiber microbend mode converter.", details: "Sub-50µm repeatability, Python mode purity scripts.", links: ["#","#"] },
+  {
+    id: "msa",
+    title: "Maritime Surveillance Aircraft",
+    img: "assets/p1.jpg",
+    tags: ["concept", "systems", "cad"],
+    summary:
+      "Concept study and structural layout for a maritime surveillance platform.",
+    details:
+      "Defined mission requirements, performed initial weight estimation, and developed fuselage frames and payload bay hardpoints. Completed aero/propulsion trades and maintenance access considerations.",
+    links: ["#", "#"],
+  },
+  {
+    id: "breakerbot",
+    title: "BreakerBot",
+    img: "assets/p2.jpg",
+    tags: ["robotics", "manufacturing"],
+    summary:
+      "Compact, serviceable combat robot focusing on drivetrain reliability and quick-change modules.",
+    details:
+      "Designed modular armor panels, integrated brushless drivetrain with overload protection, and validated gear train with FEA and benchtop torque testing.",
+    links: ["#", "#"],
+  },
+  {
+    id: "gearbox",
+    title: "Planetary Gearbox",
+    img: "assets/p3.jpg",
+    tags: ["cad", "fea"],
+    summary:
+      "Compact planetary set optimized for mass and stiffness using simulation-driven design.",
+    details:
+      "Performed contact and bending stress checks vs. AGMA, ran modal analysis on carrier to prevent mesh-induced resonance, and validated with dye-penetrant inspection.",
+    links: ["#", "#"],
+  },
+  {
+    id: "truss",
+    title: "Truss Analysis & Optimization",
+    img: "assets/p4.jpg",
+    tags: ["structures", "optimization"],
+    summary:
+      "Parametric truss optimizer with buckling and deflection constraints.",
+    details:
+      "Implemented penalty method to enforce Euler buckling margins, with sensitivity-based member sizing and manufacturing grouping constraints.",
+    links: ["#", "#"],
+  },
+  {
+    id: "pneumatic-brake",
+    title: "Pneumatic Brake Module",
+    img: "assets/p5.jpg",
+    tags: ["mechatronics", "safety"],
+    summary:
+      "Fail-safe pneumatic brake module with diagnostic telemetry and overpressure protection.",
+    details:
+      "Sized valves and reservoir per duty cycle, implemented leak-down detection, and added redundant relief per ISO 4414 guidance.",
+    links: ["#", "#"],
+  },
+  {
+    id: "mode-converter",
+    title: "Microbend Mode Converter",
+    img: "assets/p6.jpg",
+    tags: ["photonics", "test"],
+    summary:
+      "Fiber microbend mode converter for lab validation and low-cost manufacturing.",
+    details:
+      "Built adjustable microbend fixture with sub-50 µm repeatability, wrote Python scripts for mode purity quantification, and documented process for transfer to production.",
+    links: ["#", "#"],
+  },
 ];
 
+// Routing
 const routes = {
   portfolio: renderPortfolio,
-  work: renderWork,
-  resume: renderResume,
+  aviation: renderAviation,
+  blog: renderBlog,
   about: renderAbout,
 };
 
@@ -44,12 +105,86 @@ function render() {
 window.addEventListener("hashchange", render);
 window.addEventListener("load", render);
 
-// Helpers
+// Views
 function pageTitle(title, subtitle="") {
   return `
     <div class="page-title">
       <h1>${title}</h1>
       ${subtitle ? `<p>${subtitle}</p>` : ""}
+    </div>
+  `;
+}
+
+function renderPortfolio() {
+  const cards = PROJECTS.map(cardHTML).join("");
+  return `
+    ${pageTitle("Portfolio")}
+    <div class="grid">${cards}</div>
+  `;
+}
+
+function renderAviation() {
+  const cards = [1,2,3].map(n => `
+    <article class="card">
+      <div class="card-media"><img src="assets/aviation.jpg" alt="Aviation project ${n}"></div>
+      <div class="card-body">
+        <h3>Aviation Project ${n}</h3>
+        <p>Short description and key outcomes.</p>
+      </div>
+    </article>
+  `).join("");
+  return `
+    ${pageTitle("Aviation","Aerospace and flight-adjacent projects")}
+    <div class="prose">
+      <p>Highlight flight-related builds and research—airframes, avionics, control systems, or propulsion.</p>
+      <ul>
+        <li>UAV airframe concepts with weight/balance breakdown</li>
+        <li>Propeller/EDF trade studies and performance maps</li>
+        <li>Flight computer stack and wiring harness drawings</li>
+      </ul>
+    </div>
+    <div class="grid" style="margin-top:16px">${cards}</div>
+  `;
+}
+
+function renderBlog() {
+  const posts = [
+    { title: "Design log — simulation to shop", date: "2025-09-14", excerpt: "Notes on moving from quick parametric models to testable prototypes and back again." },
+    { title: "Baja suspension: anti-squat, roll steer, and real bumps", date: "2025-08-03", excerpt: "Sketches + equations that help tune the car on dirt." }
+  ];
+  return `
+    ${pageTitle("Blog","Short write-ups and notes")}
+    <div class="prose">
+      ${posts.map(p => `
+        <a class="pill" href="#" style="margin-bottom:12px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <strong>${p.title}</strong>
+            <time style="color:#6b7280">${p.date}</time>
+          </div>
+          <div style="color:#374151;margin-top:4px">${p.excerpt}</div>
+        </a>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderAbout() {
+  return `
+    ${pageTitle("About")}
+    <div class="grid" style="grid-template-columns: 1fr; gap:24px">
+      <div class="card">
+        <div class="card-media" style="aspect-ratio:1/1"><img src="assets/portrait.jpg" alt="Portrait of Nathan"></div>
+      </div>
+      <div class="prose">
+        <h2 style="margin-top:0">Hi, I’m Nathan.</h2>
+        <p>I build mechanical and mechatronic systems—vehicle dynamics, powertrain, test rigs, and simulation-driven design. I’ve worked on Baja SAE, assembly-line 3D printing integration at BMW, and powertrain engineering at Harbinger Motors.</p>
+        <p>I like minimal, serviceable designs and validating ideas quickly with bench testing, instrumentation, and FEA.</p>
+        <ul>
+          <li><a href="#" class="underline">Resume (PDF)</a></li>
+          <li><a href="#" class="underline">LinkedIn</a></li>
+          <li><a href="#" class="underline">Email</a></li>
+        </ul>
+      </div>
     </div>
   `;
 }
@@ -68,67 +203,7 @@ function cardHTML(p) {
   `;
 }
 
-// Views
-function renderPortfolio() {
-  const cards = PROJECTS.map(cardHTML).join("");
-  return `${pageTitle("Portfolio")}<div class="grid">${cards}</div>`;
-}
-
-function renderWork() {
-  const cards = [1,2,3].map(n => `
-    <article class="card">
-      <div class="card-media"><img src="assets/p1.jpg" alt="Work item ${n}"></div>
-      <div class="card-body">
-        <h3>Work Item ${n}</h3>
-        <p>Short description and key outcomes.</p>
-      </div>
-    </article>
-  `).join("");
-  return `
-    ${pageTitle("Work Experience","Selected roles and projects")}
-    <div class="prose">
-      <p>Highlights from internships and roles across powertrain, manufacturing, and test.</p>
-    </div>
-    <div class="grid" style="margin-top:16px">${cards}</div>
-  `;
-}
-
-function renderResume() {
-  return `
-    ${pageTitle("Resume","Download or view the PDF below")}
-    <div class="prose">
-      <p><a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Open Resume (PDF)</a></p>
-    </div>
-    <div style="margin-top:16px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff">
-      <object data="assets/resume.pdf" type="application/pdf" width="100%" height="1000px">
-        <p style="padding:16px">Your browser can't display embedded PDFs. <a href="assets/resume.pdf" target="_blank" rel="noopener">Click here to download.</a></p>
-      </object>
-    </div>
-  `;
-}
-
-function renderAbout() {
-  return `
-    ${pageTitle("About")}
-    <div class="grid" style="grid-template-columns: 1fr; gap:24px">
-      <div class="card">
-        <div class="card-media" style="aspect-ratio:1/1"><img src="assets/portrait.png" alt="Portrait of Nathan"></div>
-      </div>
-      <div class="prose">
-        <h2 style="margin-top:0">Hi, I’m Nathan.</h2>
-        <p>I’m a Mechanical Engineering student who builds mechanical and mechatronic systems—vehicle dynamics, powertrain, test rigs, and simulation-driven design. Experience includes Baja SAE, assembly-line 3D printing integration at BMW, and powertrain engineering at Harbinger Motors.</p>
-        <p>I like minimal, serviceable designs and validating ideas quickly with bench testing, instrumentation, and FEA.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
-          <a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
-          <a class="pill" href="https://www.linkedin.com/in/nathanhon/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="pill" href="mailto:nthon@uwaterloo.ca">Email me</a>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-// Modal wiring
+// Modal controls
 const modal = document.getElementById("modal");
 const modalTitle = document.getElementById("modal-title");
 const modalImg = document.getElementById("modal-img");
