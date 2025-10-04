@@ -143,7 +143,7 @@ function renderWork() {
 }
 
 function renderResume() {
-  const embedHeight = "calc(100vh - 160px)";
+  const embedHeight = "calc(100vh - 40px)";
   return `
     ${pageTitle("Resume","Download or view the PDF below")}
     <div class="prose">
