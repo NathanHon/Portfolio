@@ -53,6 +53,7 @@ a:hover{text-decoration:underline}
 .pill{display:block;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;color:#111827;text-decoration:none}
 .pill:hover{background:#f9fafb}
 
+/* Modal */
 .modal{position:fixed;inset:0;display:grid;place-items:center}
 .hidden{display:none}
 .modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45)}
@@ -63,64 +64,76 @@ a:hover{text-decoration:underline}
 .modal-hero img{width:100%;height:100%;object-fit:cover;display:block}
 .modal-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}
 @media (min-width:640px){.modal-grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width: 768px) {.grid {grid-template-columns: 1fr !important;}}
-@media (max-width: 768px) {object[type="application/pdf"] {height: 1000px;}}
-#app {flex: 1;}
-.resume-wrap { max-width: 1400px; margin: 16px auto 0; }
-.resume-card  { border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; }
-.resume-card object[type="application/pdf"] { display:block; width:100%; }
-/* Make the #app container go full-width only when we add the .wide class */
-/* Put this at the very bottom of styles.css */
-#app.wide {
-  width: 80vw !important;
-  max-width: 850px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  align-self: center;   
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+
+/* Responsive grid override on small screens */
+@media (max-width:768px){.grid{grid-template-columns:1fr !important}}
+
+/* App container fills vertical space */
+#app{flex:1}
+
+/* Resume layout helpers */
+.resume-wrap{max-width:1400px;margin:16px auto 0}
+.resume-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.resume-card object[type="application/pdf"]{display:block;width:100%}
+
+/* Make the #app container narrower/wide on Resume route */
+#app.wide{
+  width:80vw !important;
+  max-width:850px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  align-self:center;
+  padding-left:0 !important;
+  padding-right:0 !important;
 }
+
+/* Modal slideshow controls */
 .carousel-btn{
-  position:absolute; top:50%; transform:translateY(-50%);
-  background:rgba(0,0,0,.45); color:#fff; border:none; border-radius:999px;
-  width:36px; height:36px; line-height:36px; text-align:center; font-size:20px;
-  cursor:pointer; user-select:none;
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(0,0,0,.45);color:#fff;border:none;border-radius:999px;
+  width:36px;height:36px;line-height:36px;text-align:center;font-size:20px;
+  cursor:pointer;user-select:none;
 }
-#modal-prev{ left:10px; }
-#modal-next{ right:10px; }
-.carousel-btn:hover{ background:rgba(0,0,0,.6); }
+#modal-prev{left:10px}
+#modal-next{right:10px}
+.carousel-btn:hover{background:rgba(0,0,0,.6)}
+#modal-dots .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.6)}
+#modal-dots .dot.active{background:#fff}
 
-#modal-dots .dot{
-  width:8px; height:8px; border-radius:50%;
-  background:rgba(255,255,255,.6);
-}
-#modal-dots .dot.active{ background:#fff; }
-/* Keep resume readable and centered on small screens */
-@media (max-width: 768px) {
-  #app.wide {
-    width: 95vw !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 8px !important;
-  }
+/* ===== PDF viewport sizing ===== */
 
-  .resume-card object[type="application/pdf"] {
-    width: 100% !important;
-    height: 800px !important;
-  }
-}
-/* Desktop/default height for the PDF viewport */
-.resume-viewport {
-  height: 1000px; /* adjust for desktop if you want */
+/* Desktop/default height for the PDF viewport (no inner scroll) */
+.resume-viewport{
+  height:1000px;
+  overflow:hidden;
 }
 
-/* On phones, use short viewport units so it isn't super long */
-@media (max-width: 768px) {
-  .resume-viewport {
-    height: 70svh;     /* better than vh on mobile; accounts for browser chrome */
+/* Mobile: shorter height + enable inner scrolling */
+@media (max-width:768px){
+  /* Center your narrower resume container on phones */
+  #app.wide{
+    width:95vw !important;
+    max-width:100% !important;
+    margin:0 auto !important;
+    padding:0 8px !important;
   }
-  .resume-card object[type="application/pdf"] {
-    height: 100%;      /* match the wrapper height */
-    width: 100%;
+
+  /* Avoid clipping the PDF on iOS by allowing overflow */
+  .resume-card{
+    overflow:visible !important;
+  }
+
+  /* Phone-friendly height that accounts for browser UI; allow inner scroll */
+  .resume-viewport{
+    height:70svh;
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Make the PDF fill the scrollable viewport */
+  .resume-viewport object[type="application/pdf"]{
+    width:100%;
+    height:100%;
+    display:block;
   }
 }
