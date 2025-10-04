@@ -167,8 +167,9 @@ const routes = {
 };
 
 function currentRoute() {
-  const clean = (location.hash || "#/portfolio").replace(/^#\/?/, "");
-  return clean || "portfolio";
+  const hash = location.hash.replace(/^#\/?/, "");
+  // Default to 'portfolio' when there’s no hash in the URL
+  return hash || "portfolio";
 }
 
 function splitRoute() {
