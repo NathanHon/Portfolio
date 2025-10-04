@@ -167,11 +167,11 @@ const routes = {
 };
 
 function currentRoute() {
-  // Use path-based routing instead of hash
-  const path = location.pathname.replace(/^\/+|\/+$/g, ""); // remove leading/trailing slashes
-  const base = "portfolio"; // your repo name on GitHub Pages
-  const clean = path.replace(new RegExp("^" + base + "/?"), ""); // remove "portfolio/" prefix
-  return clean || "portfolio";
+  // Path-based routing from the site root (user site)
+  const path = location.pathname.replace(/^\/+|\/+$/g, ""); // trim leading/trailing slashes
+  // With a user site, there's no repo subfolder to strip
+  const clean = path; 
+  return clean || "portfolio"; // default page at root "/"
 }
 
 function splitRoute() {
@@ -216,15 +216,17 @@ function render() {
 }
 
 document.addEventListener("click", (e) => {
-  const link = e.target.closest("a[href^='/']"); // only internal links
-  if (link && !link.target) {
-    e.preventDefault();
-    const path = link.getAttribute("href");
-    history.pushState({}, "", path);
-    render();
-  }
-});
+  const link = e.target.closest("a[href^='/']");
+  if (!link || link.target) return;
+  const href = link.getAttribute("href");
 
+  // On a user site, allow only root-relative routes (no external)
+  if (!/^\/(work|about|resume|portfolio)?\/?$/.test(href)) return;
+
+  e.preventDefault();
+  history.pushState({}, "", href);
+  render();
+});
 
 window.addEventListener("popstate", render); // back/forward navigation
 window.addEventListener("load", render);
