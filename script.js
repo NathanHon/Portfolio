@@ -88,6 +88,7 @@ const PROJECTS = [
     id: "msa",
     title: "Maritime Surveillance Aircraft",
     img: "assets/p1.jpg",
+    imgs: ["assets/p1.jpg","assets/p1b.jpg","assets/p1c.jpg"], // slideshow images
     tags: ["concept", "systems", "cad"],
     summary:
       "Concept study and structural layout for a maritime surveillance platform.",
@@ -99,6 +100,7 @@ const PROJECTS = [
     id: "breakerbot",
     title: "BreakerBot",
     img: "assets/p2.jpg",
+    imgs: ["assets/p1.jpg","assets/p1b.jpg","assets/p1c.jpg"], // slideshow images
     tags: ["robotics", "manufacturing"],
     summary:
       "Compact, serviceable combat robot focusing on drivetrain reliability and quick-change modules.",
@@ -110,6 +112,7 @@ const PROJECTS = [
     id: "gearbox",
     title: "Planetary Gearbox",
     img: "assets/p3.jpg",
+    imgs: ["assets/p1.jpg","assets/p1b.jpg","assets/p1c.jpg"], // slideshow images
     tags: ["cad", "fea"],
     summary:
       "Compact planetary set optimized for mass and stiffness using simulation-driven design.",
@@ -121,6 +124,7 @@ const PROJECTS = [
     id: "truss",
     title: "Truss Analysis & Optimization",
     img: "assets/p4.jpg",
+    imgs: ["assets/p1.jpg","assets/p1b.jpg","assets/p1c.jpg"], // slideshow images
     tags: ["structures", "optimization"],
     summary:
       "Parametric truss optimizer with buckling and deflection constraints.",
@@ -132,6 +136,7 @@ const PROJECTS = [
     id: "pneumatic-brake",
     title: "Pneumatic Brake Module",
     img: "assets/p5.jpg",
+    imgs: ["assets/p1.jpg","assets/p1b.jpg","assets/p1c.jpg"], // slideshow images
     tags: ["mechatronics", "safety"],
     summary:
       "Fail-safe pneumatic brake module with diagnostic telemetry and overpressure protection.",
@@ -143,6 +148,7 @@ const PROJECTS = [
     id: "mode-converter",
     title: "Microbend Mode Converter",
     img: "assets/p6.jpg",
+    imgs: ["assets/p1.jpg","assets/p1b.jpg","assets/p1c.jpg"], // slideshow images
     tags: ["photonics", "test"],
     summary:
       "Fiber microbend mode converter for lab validation and low-cost manufacturing.",
@@ -354,6 +360,41 @@ const modalText = document.getElementById("modal-text");
 const modalLink1 = document.getElementById("modal-link-1");
 const modalLink2 = document.getElementById("modal-link-2");
 
+const modalPrev = document.getElementById("modal-prev");
+const modalNext = document.getElementById("modal-next");
+const modalDots = document.getElementById("modal-dots");
+
+let modalGallery = { imgs: [], index: 0 };
+
+function renderDots() {
+  modalDots.innerHTML = "";
+  modalGallery.imgs.forEach((_, i) => {
+    const d = document.createElement("div");
+    d.className = "dot" + (i === modalGallery.index ? " active" : "");
+    d.addEventListener("click", () => showSlide(i));
+    modalDots.appendChild(d);
+  });
+}
+
+function showSlide(i) {
+  if (!modalGallery.imgs.length) return;
+  if (i < 0) i = modalGallery.imgs.length - 1;       // wrap
+  if (i >= modalGallery.imgs.length) i = 0;
+  modalGallery.index = i;
+  modalImg.src = modalGallery.imgs[i];
+  renderDots();
+}
+
+// Buttons + keyboard
+modalPrev?.addEventListener("click", () => showSlide(modalGallery.index - 1));
+modalNext?.addEventListener("click", () => showSlide(modalGallery.index + 1));
+document.addEventListener("keydown", (e) => {
+  if (modal.getAttribute("aria-hidden") === "true") return;
+  if (e.key === "ArrowLeft")  showSlide(modalGallery.index - 1);
+  if (e.key === "ArrowRight") showSlide(modalGallery.index + 1);
+});
+
+
 function bindProjectClicks() {
   document.querySelectorAll("[data-project-id]").forEach(card => {
     card.addEventListener("click", () => {
@@ -361,10 +402,13 @@ function bindProjectClicks() {
       const p = PROJECTS.find(x => x.id === id);
       if (!p) return;
       modalTitle.textContent = p.title;
-      modalImg.src = p.img;
       modalText.textContent = p.details;
       modalLink1.href = p.links[0] || "#";
       modalLink2.href = p.links[1] || "#";
+      // Slideshow images (fallback to single cover)
+      const imgs = (p.imgs && p.imgs.length ? p.imgs : [p.img]);
+      modalGallery = { imgs, index: 0 };
+      showSlide(0);
       modal.classList.remove("hidden");
       modal.setAttribute("aria-hidden", "false");
     });
