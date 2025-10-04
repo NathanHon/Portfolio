@@ -213,16 +213,27 @@ function render() {
 }
 
 document.addEventListener("click", (e) => {
-  const link = e.target.closest("a[href^='/']");
-  if (!link || link.target) return;
-  const href = link.getAttribute("href");
+  const a = e.target.closest("a");
+  if (!a) return;
 
-  // On a user site, allow only root-relative routes (no external)
-  if (!/^\/(work|about|resume|portfolio)?\/?$/.test(href)) return;
+  // Handle old hash links too (just in case any remain)
+  if (a.getAttribute("href")?.startsWith("#/")) {
+    e.preventDefault();
+    const clean = a.getAttribute("href").replace(/^#\//, "/");
+    history.pushState({}, "", clean);
+    render();
+    return;
+  }
 
-  e.preventDefault();
-  history.pushState({}, "", href);
-  render();
+  // Handle root-relative links like /work, /work/slug, /about, etc.
+  if (a.origin === location.origin && a.pathname.startsWith("/")) {
+    const internal = /^\/(work(\/[^\/]+)?|about|resume|portfolio)?\/?$/.test(a.pathname);
+    if (internal && !a.target) {
+      e.preventDefault();
+      history.pushState({}, "", a.pathname);
+      render();
+    }
+  }
 });
 
 window.addEventListener("popstate", render); // back/forward navigation
