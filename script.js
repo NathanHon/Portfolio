@@ -249,7 +249,7 @@ function renderPortfolio() {
 function renderWork() {
   const cards = WORK_ITEMS.map(w => `
     <article class="card">
-      <a href="#/work/${w.slug}">
+      <a href="/work/${w.slug}">
         <div class="card-media"><img src="${w.img}" alt="${w.title}"></div>
         <div class="card-body">
           <h3>${w.title}</h3>
@@ -271,7 +271,7 @@ function renderWorkDetail(slug) {
     return `
       ${pageTitle("Work Experience")}
       <p class="prose">Sorry, that work item was not found.</p>
-      <p><a class="pill" href="#/work">Back to Work Experience</a></p>
+      <p><a class="pill" href="/work">Back to Work Experience</a></p>
     `;
   }
 
