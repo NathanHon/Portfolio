@@ -6,7 +6,22 @@ yearEl.textContent = new Date().getFullYear();
 // Work Experience items
 const WORK_ITEMS = [
   {
-    slug: "harbinger",
+    slug: "harbinger-product",
+    title: "Harbinger Motors — Product Engineering Intern",
+    img: "assets/p5.jpg",
+    summary: "Supported product development and validation of electric powertrain subassemblies.",
+    details: `
+      • Assisted in design, FEA, and GD&T documentation of inverter and gearbox subassemblies.<br>
+      • Created tolerance stack-ups and engineering drawings per company standards.<br>
+      • Collaborated with suppliers for DFM feedback and integrated changes into CAD models.<br>
+      • Supported product testing by installing instrumentation and analyzing mechanical endurance data.
+    `,
+    links: [
+      { label: "Company Website", href: "https://www.harbingermotors.com" }
+    ]
+  },
+  {
+    slug: "harbinger-powertrain",
     title: "Harbinger Motors — Powertrain Engineering Intern",
     img: "assets/p1.jpg",
     summary: "Developed and validated electric drive unit components for next-generation medium-duty EVs.",
