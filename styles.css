@@ -95,4 +95,17 @@ a:hover{text-decoration:underline}
   background:rgba(255,255,255,.6);
 }
 #modal-dots .dot.active{ background:#fff; }
+/* Keep resume readable and centered on small screens */
+@media (max-width: 768px) {
+  #app.wide {
+    width: 95vw !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 8px !important;
+  }
 
+  .resume-card object[type="application/pdf"] {
+    width: 100% !important;
+    height: 800px !important;
+  }
+}
