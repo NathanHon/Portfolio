@@ -76,8 +76,8 @@ const PROJECTS = [
 // Routing
 const routes = {
   portfolio: renderPortfolio,
-  aviation: renderAviation,
-  blog: renderBlog,
+  work: renderWork,
+  resume: renderResume,
   about: renderAbout,
 };
 
@@ -147,23 +147,18 @@ function renderAviation() {
   `;
 }
 
-function renderBlog() {
-  const posts = [
-    { title: "Design log — simulation to shop", date: "2025-09-14", excerpt: "Notes on moving from quick parametric models to testable prototypes and back again." },
-    { title: "Baja suspension: anti-squat, roll steer, and real bumps", date: "2025-08-03", excerpt: "Sketches + equations that help tune the car on dirt." }
-  ];
+function renderResume() {
   return `
-    ${pageTitle("Blog","Short write-ups and notes")}
+    ${pageTitle("Resume","Download or view the PDF below")}
     <div class="prose">
-      ${posts.map(p => `
-        <a class="pill" href="#" style="margin-bottom:12px">
-          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
-            <strong>${p.title}</strong>
-            <time style="color:#6b7280">${p.date}</time>
-          </div>
-          <div style="color:#374151;margin-top:4px">${p.excerpt}</div>
-        </a>
-      `).join("")}
+      <p><a class="pill" href="assets/resume.pdf" target="_blank" rel="noopener">Open Resume (PDF)</a></p>
+    </div>
+    <div style="margin-top:16px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff">
+      <object data="assets/resume.pdf" type="application/pdf" width="100%" height="1000px">
+        <p style="padding:16px">Your browser can't display embedded PDFs.
+          <a href="assets/resume.pdf" target="_blank" rel="noopener">Click here to download.</a>
+        </p>
+      </object>
     </div>
   `;
 }
