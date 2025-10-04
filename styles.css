@@ -76,6 +76,7 @@ a:hover{text-decoration:underline}
   max-width: 800px !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
+  align-self: center;   
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
