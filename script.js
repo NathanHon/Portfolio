@@ -3,6 +3,70 @@ const app = document.getElementById("app");
 const yearEl = document.getElementById("year");
 yearEl.textContent = new Date().getFullYear();
 
+// Work Experience items
+const WORK_ITEMS = [
+  {
+    slug: "harbinger",
+    title: "Harbinger Motors — Powertrain Engineering Intern",
+    img: "assets/p1.jpg",
+    summary: "Developed and validated electric drive unit components for next-generation medium-duty EVs.",
+    details: `
+      • Performed non-linear static FEA in HyperMesh to optimize powertrain structures for weight and cost.<br>
+      • Supported thermal and mechanical testing of drive units, using instrumentation to capture endurance data.<br>
+      • Collaborated cross-functionally with suppliers to review manufacturing feasibility and tolerance analysis.<br>
+      • Simulation results directly influenced production-intent design decisions.
+    `,
+    links: [
+      { label: "Company Website", href: "https://www.harbingermotors.com" }
+    ]
+  },
+  {
+    slug: "raytheon",
+    title: "Raytheon Technologies — Mechanical Design Co-op",
+    img: "assets/p2.jpg",
+    summary: "Supported mechanical design and FEA validation of defense-grade thermal and structural systems.",
+    details: `
+      • Modeled and analyzed complex assemblies for thermal endurance and vibration performance.<br>
+      • Used GD&T to ensure compliance with aerospace manufacturing standards.<br>
+      • Assisted in prototype testing and documentation under AS9100 procedures.<br>
+      • Presented mechanical design improvements to senior engineering management.
+    `,
+    links: [
+      { label: "Company Website", href: "https://www.rtx.com" }
+    ]
+  },
+  {
+    slug: "bmw",
+    title: "BMW Group — Product Engineering Intern",
+    img: "assets/p3.jpg",
+    summary: "Implemented additive manufacturing tools into the vehicle assembly line process.",
+    details: `
+      • Designed and validated 3D printed assembly tools to improve ergonomics and reduce build time.<br>
+      • Performed FEA and tolerance stack-up analysis to verify production durability.<br>
+      • Coordinated supplier feedback sessions and integrated feedback into design revisions.<br>
+      • Project resulted in measurable time savings per cycle on the assembly line.
+    `,
+    links: [
+      { label: "Company Website", href: "https://www.bmwgroup.com" }
+    ]
+  },
+  {
+    slug: "swap",
+    title: "Swap Robotics — Mechanical Engineering Intern",
+    img: "assets/p4.jpg",
+    summary: "Contributed to mechanical design and testing for autonomous electric mowers and snow-removal robots.",
+    details: `
+      • Designed drivetrain and steering subassemblies for modular robotic platforms.<br>
+      • Conducted FEA for load-bearing components subjected to outdoor duty cycles.<br>
+      • Performed tolerance stack-ups and GD&T drawings for machined parts.<br>
+      • Supported system-level integration and functional testing.
+    `,
+    links: [
+      { label: "Company Website", href: "https://www.swaprobotics.com" }
+    ]
+  }
+];
+
 // Fake data — replace with your real projects
 const PROJECTS = [
   {
