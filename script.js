@@ -150,6 +150,13 @@ function currentRoute() {
   return clean || "portfolio";
 }
 
+function splitRoute() {
+  // returns { base, parts } e.g. "work/bmw" -> { base:"work", parts:["work","bmw"] }
+  const raw = currentRoute();
+  const parts = raw.split("/").filter(Boolean);
+  return { base: parts[0] || "portfolio", parts };
+}
+
 function setActiveNav() {
   document.querySelectorAll("[data-route]").forEach((a) => {
     const r = a.getAttribute("href").replace(/^#\/?/, "").toLowerCase();
@@ -160,10 +167,20 @@ function setActiveNav() {
 
 function render() {
   setActiveNav();
-  const route = currentRoute();
-  const view = routes[route] || renderPortfolio;
+  const { base, parts } = splitRoute();
+
+  // dynamic detail: #/work/<slug>
+  if (base === "work" && parts.length === 2) {
+    app.innerHTML = renderWorkDetail(parts[1]); // parts[1] is the slug
+    window.scrollTo(0,0);
+    bindProjectClicks(); // safe no-op here
+    return;
+  }
+
+  const view = routes[base] || renderPortfolio;
   app.innerHTML = view();
   bindProjectClicks();
+  window.scrollTo(0,0);
 }
 
 window.addEventListener("hashchange", render);
