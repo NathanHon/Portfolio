@@ -12,10 +12,7 @@ const WORK_ITEMS = [
     img: "assets/harbinger1.jpg",
     summary: "Supported product development and validation of electric powertrain subassemblies.",
     details: `
-      • Assisted in design, FEA, and GD&T documentation of inverter and gearbox subassemblies.<br>
-      • Created tolerance stack-ups and engineering drawings per company standards.<br>
-      • Collaborated with suppliers for DFM feedback and integrated changes into CAD models.<br>
-      • Supported product testing by installing instrumentation and analyzing mechanical endurance data.
+      During my second internship at Harbinger Motors, I contributed to the development and optimization of electric powertrain components through a combination of simulation, mechanical design, and failure analysis. Using HyperMesh, I conducted structural simulations to optimize component geometry, achieving a 25% reduction in weight while also driving down manufacturing costs. I independently led the redesign of the forging and machining process for the park lock hardware, simplifying production steps and improving overall manufacturability without compromising performance. In parallel, I investigated a stator creep–induced rotor rub failure mode, performing root-cause analysis and implementing interim containment measures for existing drive units while designing mechanical countermeasures to prevent recurrence in future builds. This experience strengthened my ability to merge simulation-driven design with practical manufacturing and validation insights in an EV powertrain environment.
     `,
     links: [{ label: "Company Website", href: "https://www.harbingermotors.com" }]
   },
@@ -25,10 +22,7 @@ const WORK_ITEMS = [
     img: "assets/harbinger2.jpg",
     summary: "Developed and validated electric drive unit components for next-generation medium-duty EVs.",
     details: `
-      • Performed non-linear static FEA in HyperMesh to optimize powertrain structures for weight and cost.<br>
-      • Supported thermal and mechanical testing of drive units, using instrumentation to capture endurance data.<br>
-      • Collaborated cross-functionally with suppliers to review manufacturing feasibility and tolerance analysis.<br>
-      • Simulation results directly influenced production-intent design decisions.
+      During my internship at Harbinger Motors, I focused on testing and validation of electric drive unit (EDU) and park lock systems to enhance durability, reliability, and NVH performance. I performed ratchet, cyclic, and high-load testing on EV park lock systems to identify mechanical failure modes under simulated grade-load conditions. To improve data accuracy and repeatability, I redesigned key test rig components in CATIA, optimizing fixturing and load paths. This redesign enabled more consistent results that revealed fracture-prone geometries, ultimately driving improvements in heat treatment processes, component weight, and dimensional tolerances of the park lock assembly. In parallel, I conducted a modal analysis of the EDU housing to pinpoint resonance frequencies and structural regions vulnerable to vibration-induced fatigue or noise amplification. Additionally, I performed 5 kV HiPot insulation resistance tests on stators within a thermal chamber to confirm electrical integrity exceeding 250 MΩ at 220 °C, validating the effectiveness of the varnish layering process and bolt preload strategy. Through this experience, I deepened my understanding of mechanical testing, structural dynamics, and insulation system design in high-voltage EV powertrain applications.
     `,
     links: [{ label: "Company Website", href: "https://www.harbingermotors.com" }]
   },
@@ -38,10 +32,7 @@ const WORK_ITEMS = [
     img: "assets/raytheon.jpg",
     summary: "Supported mechanical design and FEA validation of defense-grade thermal and structural systems.",
     details: `
-      • Modeled and analyzed complex assemblies for thermal endurance and vibration performance.<br>
-      • Used GD&T to ensure compliance with aerospace manufacturing standards.<br>
-      • Assisted in prototype testing and documentation under AS9100 procedures.<br>
-      • Presented mechanical design improvements to senior engineering management.
+      During my internship at Raytheon Technologies, I worked on advancing manufacturing process automation and thermal system optimization to improve production efficiency and reliability in aerospace component manufacturing. I conducted transient thermal simulations to optimize the heating and cooling profiles of a new vacuum lamination process, improving epoxy cure reliability and reducing production time by 65%. To enhance process traceability, I developed an Ignition-based dashboard for centralized monitoring of real-time oven data, giving technicians and operators immediate visibility into equipment performance and enabling faster defect tracking and higher equipment utilization. Additionally, I led the integration of an automated torque machine with built-in torque sensing and vision-based inspection into the assembly line, configuring torque parameters, defining pass/fail limits, and performing acceptance testing to verify compliance with engineering specifications. I also authored standard operating procedures (SOPs) and trained operators, achieving a 40% reduction in assembly cycle time through automation. This role strengthened my skills in thermal analysis, controls integration, and process automation, bridging simulation and manufacturing to deliver tangible production improvements.
     `,
     links: [{ label: "Company Website", href: "https://www.rtx.com" }]
   },
@@ -51,10 +42,7 @@ const WORK_ITEMS = [
     img: "assets/bmw.jpg",
     summary: "Implemented additive manufacturing tools into the vehicle assembly line process.",
     details: `
-      • Designed and validated 3D printed assembly tools to improve ergonomics and reduce build time.<br>
-      • Performed FEA and tolerance stack-up analysis to verify production durability.<br>
-      • Coordinated supplier feedback sessions and integrated feedback into design revisions.<br>
-      • Project resulted in measurable time savings per cycle on the assembly line.
+      During my time at BMW Group, I led initiatives to integrate additive manufacturing and design automation into the vehicle assembly process, driving measurable cost and efficiency improvements. I designed and validated over 45 functional models and 3D printed more than 250 components used to address assembly line issues, reducing downtime and saving the plant hundreds of thousands of dollars annually. Recognizing the potential of rapid prototyping, I spearheaded the adoption of additive manufacturing solutions, preparing and presenting a business case to the Vice President of Assembly that successfully justified the formation of a new dedicated design department focused on 3D-printed tooling and fixtures. In parallel, I collaborated with cross-functional engineering and IT teams to pioneer a centralized CAD sharing program, establishing the digital infrastructure needed for seamless access and version control of design files across the plant. This experience strengthened my skills in design for manufacturability, additive engineering, and cross-departmental process integration, while deepening my understanding of large-scale automotive production systems.
     `,
     links: [{ label: "Company Website", href: "https://www.bmwgroup.com" }]
   },
@@ -64,10 +52,7 @@ const WORK_ITEMS = [
     img: "assets/swapRobotics.jpg",
     summary: "Contributed to mechanical design and testing for autonomous electric mowers and snow-removal robots.",
     details: `
-      • Designed drivetrain and steering subassemblies for modular robotic platforms.<br>
-      • Conducted FEA for load-bearing components subjected to outdoor duty cycles.<br>
-      • Performed tolerance stack-ups and GD&T drawings for machined parts.<br>
-      • Supported system-level integration and functional testing.
+      At Swap Robotics, I contributed to the design, assembly, and validation of autonomous robotic systems, helping the company scale production and improve reliability across its growing fleet. I developed a detailed standard operating procedure (SOP) for robot assembly that significantly reduced onboarding and build times, enabling faster integration of new technicians and smoother production flow. Beyond documentation, I constructed and serviced robotic units, directly supporting efforts that doubled the number of operational robots in the field while maintaining uptime for existing systems. To enhance performance and durability, I designed and executed rigorous testing procedures that simulated real-world operating conditions, achieving a threefold increase in run times and improving system robustness. This experience deepened my practical understanding of robotic assembly, testing, and reliability engineering, while reinforcing the importance of scalable processes in fast-growing hardware startups.
     `,
     links: [{ label: "Company Website", href: "https://www.swaprobotics.com" }]
   }
