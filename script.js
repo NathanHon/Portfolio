@@ -86,8 +86,8 @@ const PROJECTS = [
   {
     id: "carbon-composite-research",
     title: "Carbon Fiber Composite Research",
-    img: "assets/p1.jpg",
-    imgs: ["assets/p1.jpg","assets/p2.jpg"],
+    img: "assets/Picture3.jpg",
+    imgs: ["assets/Picture4.jpg","assets/Picture5.jpg"],
     tags: ["materials", "testing", "manufacturing"],
     summary: "Experimental study on carbon fiber layups, cure cycles, and failure modes.",
     details:
@@ -97,8 +97,8 @@ const PROJECTS = [
   {
     id: "front-suspension-2024",
     title: "Front Suspension Design (2024)",
-    img: "assets/p2.jpg",
-    imgs: ["assets/p2.jpg","assets/p3.jpg"],
+    img: "assets/Picture6.jpg",
+    imgs: ["assets/Picture7.jpg","assets/Picture8.jpg"],
     tags: ["vehicle dynamics", "CAD", "FEA"],
     summary: "Double-wishbone geometry with KPI/Scrub/Roll center targets for a student racecar.",
     details:
@@ -119,8 +119,8 @@ const PROJECTS = [
   {
     id: "powertrain-2023",
     title: "Powertrain Design (2023)",
-    img: "assets/p4.jpg",
-    imgs: ["assets/p4.jpg","assets/p5.jpg"],
+    img: "assets/Picture9.jpg",
+    imgs: ["assets/Picture11.jpg","assets/Picture12.jpg"],
     tags: ["drivetrain", "gearing", "analysis"],
     summary: "Concept-to-detail design of a compact drivetrain with simulation-driven gearing.",
     details:
@@ -130,8 +130,8 @@ const PROJECTS = [
   {
     id: "autonomous-chess-bot",
     title: "Autonomous Chess Bot",
-    img: "assets/p5.jpg",
-    imgs: ["assets/p5.jpg","assets/p6.jpg"],
+    img: "assets/Picture13.jpg",
+    imgs: ["assets/Picture14.jpg","assets/Picture15.jpg"],
     tags: ["mechatronics", "vision", "controls"],
     summary: "Robot identifies the board and moves pieces with a Cartesian gantry and gripper.",
     details:
@@ -141,8 +141,8 @@ const PROJECTS = [
   {
     id: "rolex-submariner-model",
     title: "Rolex Submariner Model",
-    img: "assets/p6.jpg",
-    imgs: ["assets/p6.jpg","assets/p1.jpg"],
+    img: "assets/Picture17.jpg",
+    imgs: ["assets/Picture16.jpg","assets/Picture18.jpg"],
     tags: ["surface modeling", "CAD", "render"],
     summary: "High-fidelity surface model with attention to curvature continuity and detailing.",
     details:
@@ -152,8 +152,8 @@ const PROJECTS = [
   {
     id: "hvac-design",
     title: "HVAC Design",
-    img: "assets/p1.jpg",
-    imgs: ["assets/p1.jpg","assets/p2.jpg"],
+    img: "assets/Picture20.jpg",
+    imgs: ["assets/Picture19.jpg","assets/Picture21.jpg"],
     tags: ["thermals", "ducting", "simulation"],
     summary: "Sized ducting and components for airflow, pressure drop, and acoustic targets.",
     details:
@@ -163,8 +163,8 @@ const PROJECTS = [
   {
     id: "machine-learning",
     title: "Machine Learning",
-    img: "assets/p2.jpg",
-    imgs: ["assets/p2.jpg","assets/p3.jpg"],
+    img: "assets/Picture24.jpg",
+    imgs: ["assets/Picture22.jpg","assets/Picture23.jpg"],
     tags: ["python", "classification", "cv"],
     summary: "Prototyped models to classify images and signals supporting engineering tests.",
     details:
@@ -174,8 +174,8 @@ const PROJECTS = [
   {
     id: "microfluid-cartridge-reader",
     title: "Microfluid Cartridge Reader",
-    img: "assets/p3.jpg",
-    imgs: ["assets/p3.jpg","assets/p4.jpg"],
+    img: "assets/Picture27.jpg",
+    imgs: ["assets/Picture28.jpg","assets/Picture26.jpg"],
     tags: ["biomed", "mechanisms", "electronics"],
     summary: "Compact reader for disposable microfluidic cartridges with optical sensing.",
     details:
