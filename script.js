@@ -73,78 +73,226 @@ const WORK_ITEMS = [
   }
 ];
 
-// NOTE: If some projects don't have links, this code handles it safely.
 const PROJECTS = [
   {
-    id: "msa",
-    title: "Maritime Surveillance Aircraft",
-    img: "assets/p1.jpg",
-    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
-    tags: ["concept", "systems", "cad"],
-    summary: "Concept study and structural layout for a maritime surveillance platform.",
+    id: "carbon-composite-research",
+    title: "Carbon Fiber Composite Research",
+    img: "assets/Picture3.jpg",
+    imgs: ["assets/Picture3.jpg","assets/Picture4.jpg","assets/Picture5.jpg"],
+    tags: ["materials", "testing", "manufacturing"],
+    summary: "Experimental study on carbon fiber layups, cure cycles, and failure modes.",
     details:
-      "Defined mission requirements, performed initial weight estimation, and developed fuselage frames and payload bay hardpoints. Completed aero/propulsion trades and maintenance access considerations.",
-    links: ["#", "#"]
+      "Characterized laminate stiffness and strength across layup schedules; prepared coupons and ran tensile/3-point bend tests; analyzed failure surfaces and optimized cure parameters for repeatability.",
+    //links: ["#", "#"],
   },
   {
-    id: "breakerbot",
-    title: "BreakerBot",
-    img: "assets/p2.jpg",
-    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
-    tags: ["robotics", "manufacturing"],
-    summary:
-      "Compact, serviceable combat robot focusing on drivetrain reliability and quick-change modules.",
+    id: "front-suspension-2024",
+    title: "Front Suspension Design (2024)",
+    img: "assets/Picture6.jpg",
+    imgs: ["assets/Picture6.jpg","assets/Picture7.jpg","assets/Picture8.jpg"],
+    tags: ["vehicle dynamics", "CAD", "FEA"],
+    summary: "Double-wishbone geometry with KPI/Scrub/Roll center targets for a student racecar.",
     details:
-      "Designed modular armor panels, integrated brushless drivetrain with overload protection, and validated gear train with FEA and benchtop torque testing.",
-    links: ["#", "#"]
+      "Set kinematic targets, performed camber gain/roll center migration studies; packaged uprights and steering; verified control arms with FEA and generated GD&T drawings for fabrication.",
+    //links: ["#", "#"],
   },
   {
-    id: "gearbox",
-    title: "Planetary Gearbox",
+    id: "composite-aerobody",
+    title: "Composite Aerobody Manufacturing",
     img: "assets/p3.jpg",
-    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
-    tags: ["cad", "fea"],
-    summary:
-      "Compact planetary set optimized for mass and stiffness using simulation-driven design.",
+    imgs: ["assets/p3.jpg","assets/p4.jpg"],
+    tags: ["composites", "tooling", "process"],
+    summary: "Designed molds and built a lightweight aerodynamic body using wet layup/vacuum bagging.",
     details:
-      "Performed contact and bending stress checks vs. AGMA, ran modal analysis on carrier to prevent mesh-induced resonance, and validated with dye-penetrant inspection.",
-    links: ["#", "#"]
+      "Created split molds with draft and flanges; selected layup schedule for stiffness/weight; executed vacuum bagging, trim, and bonding; documented process for reproducibility.",
+    //links: ["#", "#"],
   },
   {
-    id: "truss",
-    title: "Truss Analysis & Optimization",
+    id: "powertrain-2023",
+    title: "Powertrain Design (2023)",
+    img: "assets/Picture9.jpg",
+    imgs: ["assets/Picture9.jpg","assets/Picture11.jpg","assets/Picture12.jpg"],
+    tags: ["drivetrain", "gearing", "analysis"],
+    summary: "Concept-to-detail design of a compact drivetrain with simulation-driven gearing.",
+    details:
+      "Performed ratio/torque trade studies; modeled shafts, bearings, and housings; ran contact and bending checks; created tolerance stacks and manufacturing drawings.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "autonomous-chess-bot",
+    title: "Autonomous Chess Bot",
+    img: "assets/Picture13.jpg",
+    imgs: ["assets/Picture13.jpg","assets/Picture14.jpg","assets/Picture15.jpg"],
+    tags: ["mechatronics", "vision", "controls"],
+    summary: "Robot identifies the board and moves pieces with a Cartesian gantry and gripper.",
+    details:
+      "Implemented camera calibration and piece detection; planned legal moves; controlled stepper axes and end-effector; added homing and collision detection for robustness.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "rolex-submariner-model",
+    title: "Rolex Submariner Model",
+    img: "assets/Picture17.jpg",
+    imgs: ["assets/Picture17.jpg","assets/Picture16.jpg","assets/Picture18.jpg"],
+    tags: ["surface modeling", "CAD", "render"],
+    summary: "High-fidelity surface model with attention to curvature continuity and detailing.",
+    details:
+      "Used parametric and freeform features to match references; controlled G2 transitions; created exploded views and renders highlighting crown, bezel, and bracelet links.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "hvac-design",
+    title: "HVAC Design",
+    img: "assets/Picture20.jpg",
+    imgs: ["assets/Picture20.jpg","assets/Picture19.jpg","assets/Picture21.jpg"],
+    tags: ["thermals", "ducting", "simulation"],
+    summary: "Sized ducting and components for airflow, pressure drop, and acoustic targets.",
+    details:
+      "Calculated loads and flow rates; selected fan/filters; analyzed pressure losses and noise; produced layout drawings and BOM for build.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "machine-learning",
+    title: "Machine Learning",
+    img: "assets/Picture24.jpg",
+    imgs: ["assets/Picture24.jpg","assets/Picture22.jpg","assets/Picture23.jpg"],
+    tags: ["python", "classification", "cv"],
+    summary: "Prototyped models to classify images and signals supporting engineering tests.",
+    details:
+      "Preprocessed datasets, trained baseline classifiers, evaluated ROC/PR metrics, and deployed lightweight inference scripts for lab use.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "microfluid-cartridge-reader",
+    title: "Microfluid Cartridge Reader",
+    img: "assets/Picture27.jpg",
+    imgs: ["assets/Picture27.jpg","assets/Picture28.jpg","assets/Picture26.jpg"],
+    tags: ["biomed", "mechanisms", "electronics"],
+    summary: "Compact reader for disposable microfluidic cartridges with optical sensing.",
+    details:
+      "Designed latching/registration features; integrated LED/photodiode sensing; developed firmware for acquisition; validated repeatability and ease of service.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "bmw-air-intake",
+    title: "BMW Air Intake",
     img: "assets/p4.jpg",
-    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
-    tags: ["structures", "optimization"],
-    summary:
-      "Parametric truss optimizer with buckling and deflection constraints.",
+    imgs: ["assets/p4.jpg","assets/p5.jpg"],
+    tags: ["manufacturing", "ergonomics", "additive"],
+    summary: "Additively manufactured intake tooling and components for assembly improvements.",
     details:
-      "Implemented penalty method to enforce Euler buckling margins, with sensitivity-based member sizing and manufacturing grouping constraints.",
-    links: ["#", "#"]
+      "Modeled intake geometry and fixtures; evaluated print orientation and materials; verified fit and durability; documented process changes for the line.",
+    //links: ["#", "#"],
   },
   {
-    id: "pneumatic-brake",
-    title: "Pneumatic Brake Module",
+    id: "bulkhead-design",
+    title: "Bulkhead Design & Layup",
     img: "assets/p5.jpg",
-    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
-    tags: ["mechatronics", "safety"],
-    summary:
-      "Fail-safe pneumatic brake module with diagnostic telemetry and overpressure protection.",
+    imgs: ["assets/p5.jpg","assets/p6.jpg"],
+    tags: ["structures", "composites", "FEA"],
+    summary: "Structural bulkhead with composite layup tailored for stiffness and load paths.",
     details:
-      "Sized valves and reservoir per duty cycle, implemented leak-down detection, and added redundant relief per ISO 4414 guidance.",
-    links: ["#", "#"]
+      "Ran panel/buckling checks; tuned ply orientations; designed cores and hardpoints; executed layup and cure; inspected and trimmed to spec.",
+    //links: ["#", "#"],
   },
   {
-    id: "mode-converter",
-    title: "Microbend Mode Converter",
+    id: "wec",
+    title: "Waterloo Engineering Competition",
     img: "assets/p6.jpg",
-    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
-    tags: ["photonics", "test"],
-    summary:
-      "Fiber microbend mode converter for lab validation and low-cost manufacturing.",
+    imgs: ["assets/p6.jpg","assets/p1.jpg"],
+    tags: ["design sprint", "prototype", "team"],
+    summary: "Rapid ideation and prototyping under time constraints; delivered a working demo.",
     details:
-      "Built adjustable microbend fixture with sub-50 µm repeatability, wrote Python scripts for mode purity quantification, and documented process for transfer to production.",
-    links: ["#", "#"]
+      "Defined problem scope, sketched concepts, built a proof-of-concept prototype, and presented results with metrics and failure analysis.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "foldable-skateboard",
+    title: "Foldable Skateboard",
+    img: "assets/p1.jpg",
+    imgs: ["assets/p1.jpg","assets/p2.jpg"],
+    tags: ["mechanisms", "linkages", "cad"],
+    summary: "Portable deck with a locking hinge and quick-release trucks.",
+    details:
+      "Designed hinge/lock geometry, selected materials for stiffness vs weight, validated safety factors, and produced fabrication drawings.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "gravity-car",
+    title: "Gravity Car",
+    img: "assets/p2.jpg",
+    imgs: ["assets/p2.jpg","assets/p3.jpg"],
+    tags: ["aero", "rolling resistance", "test"],
+    summary: "Low-drag gravity racer optimized for mass distribution and wheel alignment.",
+    details:
+      "Conducted bearing and toe/ camber alignment tests; tuned CG placement; measured run-to-run variance and improved repeatability.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "mouse-surface-modeling",
+    title: "Computer Mouse Surface Modeling",
+    img: "assets/p3.jpg",
+    imgs: ["assets/p3.jpg","assets/p4.jpg"],
+    tags: ["industrial design", "ergonomics", "surfacing"],
+    summary: "Ergonomic mouse shell with continuous curvature and manufacturable splits.",
+    details:
+      "Captured hand dimensions, created surface patches with G2 continuity, split for tooling, and rendered CMF variants.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "cessna-plane",
+    title: "Cessna Plane",
+    img: "assets/p4.jpg",
+    imgs: ["assets/p4.jpg","assets/p5.jpg"],
+    tags: ["aerospace", "cad", "structures"],
+    summary: "Scaled airframe model for structural layout and weight estimation.",
+    details:
+      "Defined primary structure, estimated mass properties, created fuselage frames and spar/rib layout; documented assembly strategy.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "lego-car",
+    title: "Lego Car Design",
+    img: "assets/p5.jpg",
+    imgs: ["assets/p5.jpg","assets/p6.jpg"],
+    tags: ["concept", "mechanisms", "fun"],
+    summary: "Functional LEGO car with steering and gearing demonstrations.",
+    details:
+      "Explored gear ratios and Ackermann steering; built and tested modules; shared a small build guide for others.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "pre-engineering",
+    title: "Pre-Engineering",
+    img: "assets/p6.jpg",
+    imgs: ["assets/p6.jpg","assets/p1.jpg"],
+    tags: ["foundations", "shop", "projects"],
+    summary: "Early projects building fundamentals in CAD, fabrication, and testing.",
+    details:
+      "Completed small mechanisms and fixtures; learned safe machining; practiced drawing standards and tolerance basics.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "nslc",
+    title: "NSLC",
+    img: "assets/p1.jpg",
+    imgs: ["assets/p1.jpg","assets/p2.jpg"],
+    tags: ["leadership", "team", "presentation"],
+    summary: "Leadership and engineering challenges with cross-disciplinary teams.",
+    details:
+      "Led brainstorming, divided tasks, coordinated timelines, and presented solutions with data-backed tradeoffs.",
+    //links: ["#", "#"],
+  },
+  {
+    id: "java-game-arcade",
+    title: "Java Game Arcade",
+    img: "assets/p2.jpg",
+    imgs: ["assets/p2.jpg","assets/p3.jpg"],
+    tags: ["java", "oop", "ui"],
+    summary: "Mini-games built in Java demonstrating OOP patterns and simple UIs.",
+    details:
+      "Implemented game loops, input handling, and scoring; organized code with classes/interfaces; added basic asset loading and menus.",
+    //links: ["#", "#"],
   }
 ];
 
