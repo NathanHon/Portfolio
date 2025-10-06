@@ -438,8 +438,8 @@ function renderWork(slug) {
   `).join("");
 
   return `
-    ${pageTitle("Work Experience","Selected roles and projects")}
-    <div class="grid" style="margin-top:4px">${cards}</div>
+    ${pageTitle("Work Experience","Previous roles and projects")}
+    <div class="grid work-list" style="margin-top:4px">${cards}</div>
   `;
 }
 
