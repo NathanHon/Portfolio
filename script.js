@@ -2,10 +2,6 @@
 const app = document.getElementById("app");
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
-function asset(p) {
-  if (!p) return "";
-  return p.startsWith("/") ? p : "/" + p.replace(/^\/+/, "");
-}
 
 // ----------------------- DATA -----------------------
 
@@ -13,7 +9,7 @@ const WORK_ITEMS = [
   {
     slug: "harbinger-product",
     title: "Harbinger Motors — Product Engineering Intern",
-    img: "/assets/harbinger1.jpg",
+    img: "assets/harbinger1.jpg",
     summary: "Supported product development and validation of electric powertrain subassemblies.",
     details: `
       During my second internship at Harbinger Motors, I contributed to the development and optimization of electric powertrain components through a combination of simulation, mechanical design, and failure analysis. Using HyperMesh, I conducted structural simulations to optimize component geometry, achieving a 25% reduction in weight while also driving down manufacturing costs. I independently led the redesign of the forging and machining process for the park lock hardware, simplifying production steps and improving overall manufacturability without compromising performance. In parallel, I investigated a stator creep–induced rotor rub failure mode, performing root-cause analysis and implementing interim containment measures for existing drive units while designing mechanical countermeasures to prevent recurrence in future builds. This experience strengthened my ability to merge simulation-driven design with practical manufacturing and validation insights in an EV powertrain environment.
@@ -23,7 +19,7 @@ const WORK_ITEMS = [
   {
     slug: "harbinger-powertrain",
     title: "Harbinger Motors — Powertrain Engineering Intern",
-    img: "/assets/harbinger2.jpg",
+    img: "assets/harbinger2.jpg",
     summary: "Developed and validated electric drive unit components for next-generation medium-duty EVs.",
     details: `
       During my internship at Harbinger Motors, I focused on testing and validation of electric drive unit (EDU) and park lock systems to enhance durability, reliability, and NVH performance. I performed ratchet, cyclic, and high-load testing on EV park lock systems to identify mechanical failure modes under simulated grade-load conditions. To improve data accuracy and repeatability, I redesigned key test rig components in CATIA, optimizing fixturing and load paths. This redesign enabled more consistent results that revealed fracture-prone geometries, ultimately driving improvements in heat treatment processes, component weight, and dimensional tolerances of the park lock assembly. In parallel, I conducted a modal analysis of the EDU housing to pinpoint resonance frequencies and structural regions vulnerable to vibration-induced fatigue or noise amplification. Additionally, I performed 5 kV HiPot insulation resistance tests on stators within a thermal chamber to confirm electrical integrity exceeding 250 MΩ at 220 °C, validating the effectiveness of the varnish layering process and bolt preload strategy. Through this experience, I deepened my understanding of mechanical testing, structural dynamics, and insulation system design in high-voltage EV powertrain applications.
@@ -33,7 +29,7 @@ const WORK_ITEMS = [
   {
     slug: "raytheon",
     title: "Raytheon Technologies — Mechanical Design Co-op",
-    img: "/assets/raytheon.jpg",
+    img: "assets/raytheon.jpg",
     summary: "Supported mechanical design and FEA validation of defense-grade thermal and structural systems.",
     details: `
       During my internship at Raytheon Technologies, I worked on advancing manufacturing process automation and thermal system optimization to improve production efficiency and reliability in aerospace component manufacturing. I conducted transient thermal simulations to optimize the heating and cooling profiles of a new vacuum lamination process, improving epoxy cure reliability and reducing production time by 65%. To enhance process traceability, I developed an Ignition-based dashboard for centralized monitoring of real-time oven data, giving technicians and operators immediate visibility into equipment performance and enabling faster defect tracking and higher equipment utilization. Additionally, I led the integration of an automated torque machine with built-in torque sensing and vision-based inspection into the assembly line, configuring torque parameters, defining pass/fail limits, and performing acceptance testing to verify compliance with engineering specifications. I also authored standard operating procedures (SOPs) and trained operators, achieving a 40% reduction in assembly cycle time through automation. This role strengthened my skills in thermal analysis, controls integration, and process automation, bridging simulation and manufacturing to deliver tangible production improvements.
@@ -43,7 +39,7 @@ const WORK_ITEMS = [
   {
     slug: "bmw",
     title: "BMW Group — Product Engineering Intern",
-    img: "/assets/bmw.jpg",
+    img: "assets/bmw.jpg",
     summary: "Implemented additive manufacturing tools into the vehicle assembly line process.",
     details: `
       During my time at BMW Group, I led initiatives to integrate additive manufacturing and design automation into the vehicle assembly process, driving measurable cost and efficiency improvements. I designed and validated over 45 functional models and 3D printed more than 250 components used to address assembly line issues, reducing downtime and saving the plant hundreds of thousands of dollars annually. Recognizing the potential of rapid prototyping, I spearheaded the adoption of additive manufacturing solutions, preparing and presenting a business case to the Vice President of Assembly that successfully justified the formation of a new dedicated design department focused on 3D-printed tooling and fixtures. In parallel, I collaborated with cross-functional engineering and IT teams to pioneer a centralized CAD sharing program, establishing the digital infrastructure needed for seamless access and version control of design files across the plant. This experience strengthened my skills in design for manufacturability, additive engineering, and cross-departmental process integration, while deepening my understanding of large-scale automotive production systems.
@@ -53,7 +49,7 @@ const WORK_ITEMS = [
   {
     slug: "swap",
     title: "Swap Robotics — Mechanical Engineering Intern",
-    img: "/assets/swapRobotics.jpg",
+    img: "assets/swapRobotics.jpg",
     summary: "Contributed to mechanical design and testing for autonomous electric mowers and snow-removal robots.",
     details: `
       At Swap Robotics, I contributed to the design, assembly, and validation of autonomous robotic systems, helping the company scale production and improve reliability across its growing fleet. I developed a detailed standard operating procedure (SOP) for robot assembly that significantly reduced onboarding and build times, enabling faster integration of new technicians and smoother production flow. Beyond documentation, I constructed and serviced robotic units, directly supporting efforts that doubled the number of operational robots in the field while maintaining uptime for existing systems. To enhance performance and durability, I designed and executed rigorous testing procedures that simulated real-world operating conditions, achieving a threefold increase in run times and improving system robustness. This experience deepened my practical understanding of robotic assembly, testing, and reliability engineering, while reinforcing the importance of scalable processes in fast-growing hardware startups.
@@ -387,7 +383,7 @@ function renderWork() {
     (w) => `
     <article class="card" data-project-id="">
       <a href="/work/${w.slug}">
-        <div class="card-media"><img src="${asset(w.img)}" alt="${w.title}"></div>
+        <div class="card-media"><img src="${w.img}" alt="${w.title}"></div>
         <div class="card-body">
           <h3>${w.title}</h3>
           <p>${w.summary}</p>
@@ -403,32 +399,15 @@ function renderWork() {
   `;
 }
 
-  const links = (item.links || []).map(l => `
-    <a class="pill" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>
-  `).join("");
-
-  // ✅ Ensure valid image source — fallback if missing
-  const imageSrc = item.img && item.img.trim() !== "" ? item.img : "assets/placeholder.jpg";
-
-  return `
-    ${pageTitle(item.title)}
-    <div class="grid" style="grid-template-columns: 1fr; gap:24px">
-      <div class="card">
-        <div class="card-media" style="aspect-ratio:16/9; background:#fff; display:flex; justify-content:center; align-items:center;">
-          <img src="${imageSrc}" alt="${item.title}" style="max-width:100%; max-height:100%; object-fit:contain; background:#fff;">
-        </div>
-      </div>
-      <div class="prose">
-        <p>${item.details}</p>
-        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
-          ${links}
-          <a class="pill" href="/work">← Back to Work</a>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
+function renderWorkDetail(slug) {
+  const item = WORK_ITEMS.find((w) => w.slug === slug);
+  if (!item) {
+    return `
+      ${pageTitle("Work Experience")}
+      <p class="prose">Sorry, that work item was not found.</p>
+      <p><a class="pill" href="/work">Back to Work Experience</a></p>
+    `;
+  }
 
   const links = (item.links || []).map(
     (l) => `<a class="pill" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`
@@ -509,7 +488,7 @@ function cardHTML(p) {
   const tags = (p.tags || []).map((t) => `<span class="tag">${t}</span>`).join("");
   return `
     <article class="card" data-project-id="${p.id}">
-      <div class="card-media"><img src="${asset(p.img)}" alt="${p.title}"></div>
+      <div class="card-media"><img src="${p.img}" alt="${p.title}"></div>
       <div class="card-body">
         <div class="tags">${tags}</div>
         <h3>${p.title}</h3>
@@ -553,7 +532,7 @@ function showSlide(i) {
   if (i < 0) i = modalGallery.imgs.length - 1;
   if (i >= modalGallery.imgs.length) i = 0;
   modalGallery.index = i;
- modalImg.src = asset(modalGallery.imgs[i]);
+  modalImg.src = modalGallery.imgs[i];
   renderDots();
 }
 
@@ -573,8 +552,8 @@ function openProjectModal(p) {
   if (modalLink2) modalLink2.href = safeHref(href1);
 
   // Images (fallback to single cover)
-  const imgs = (Array.isArray(p?.imgs) && p.imgs.length) ? p.imgs.map(asset)
-              : (p?.img ? [asset(p.img)] : []);
+  const imgs = (Array.isArray(p?.imgs) && p.imgs.length) ? p.imgs
+              : (p?.img ? [p.img] : []);
   modalGallery = { imgs, index: 0 };
   showSlide(0);
 
