@@ -523,21 +523,29 @@ function cardHTML(p) {
   `;
 }
 
-// Modal controls
-const modal = document.getElementById("modal");
-const modalTitle = document.getElementById("modal-title");
-const modalImg = document.getElementById("modal-img");
-const modalText = document.getElementById("modal-text");
-const modalLink1 = document.getElementById("modal-link-1");
-const modalLink2 = document.getElementById("modal-link-2");
-
-const modalPrev = document.getElementById("modal-prev");
-const modalNext = document.getElementById("modal-next");
-const modalDots = document.getElementById("modal-dots");
+// ===================== Modal controls (robust) =====================
+const modal       = document.getElementById("modal");
+const modalTitle  = document.getElementById("modal-title");
+const modalImg    = document.getElementById("modal-img");
+const modalText   = document.getElementById("modal-text");
+const modalLink1  = document.getElementById("modal-link-1");
+const modalLink2  = document.getElementById("modal-link-2");
+const modalPrev   = document.getElementById("modal-prev");
+const modalNext   = document.getElementById("modal-next");
+const modalDots   = document.getElementById("modal-dots");
 
 let modalGallery = { imgs: [], index: 0 };
 
+function safeLink(p, i) {
+  // return a usable href or "#"
+  if (p && Array.isArray(p.links) && typeof p.links[i] === "string" && p.links[i].trim() !== "") {
+    return p.links[i];
+  }
+  return "#";
+}
+
 function renderDots() {
+  if (!modalDots) return;
   modalDots.innerHTML = "";
   modalGallery.imgs.forEach((_, i) => {
     const d = document.createElement("div");
@@ -548,51 +556,65 @@ function renderDots() {
 }
 
 function showSlide(i) {
-  if (!modalGallery.imgs.length) return;
-  if (i < 0) i = modalGallery.imgs.length - 1;       // wrap
+  if (!modalGallery.imgs.length || !modalImg) return;
+  if (i < 0) i = modalGallery.imgs.length - 1;   // wrap
   if (i >= modalGallery.imgs.length) i = 0;
   modalGallery.index = i;
   modalImg.src = modalGallery.imgs[i];
   renderDots();
 }
 
-// Buttons + keyboard
-modalPrev?.addEventListener("click", () => showSlide(modalGallery.index - 1));
-modalNext?.addEventListener("click", () => showSlide(modalGallery.index + 1));
-document.addEventListener("keydown", (e) => {
-  if (modal.getAttribute("aria-hidden") === "true") return;
-  if (e.key === "ArrowLeft")  showSlide(modalGallery.index - 1);
-  if (e.key === "ArrowRight") showSlide(modalGallery.index + 1);
-});
+function openProjectModal(p) {
+  if (!modal) return;
+  // Title / text
+  if (modalTitle) modalTitle.textContent = p?.title || "";
+  if (modalText)  modalText.textContent  = p?.details || "";
 
+  // Links (guard against missing arrays)
+  if (modalLink1) modalLink1.href = safeLink(p, 0);
+  if (modalLink2) modalLink2.href = safeLink(p, 1);
 
-function bindProjectClicks() {
-  document.querySelectorAll("[data-project-id]").forEach(card => {
-    card.addEventListener("click", () => {
-      const id = card.getAttribute("data-project-id");
-      const p = PROJECTS.find(x => x.id === id);
-      if (!p) return;
-      modalTitle.textContent = p.title;
-      modalText.textContent = p.details;
-      modalLink1.href = p.links[0] || "#";
-      modalLink2.href = p.links[1] || "#";
-      // Slideshow images (fallback to single cover)
-      const imgs = (p.imgs && p.imgs.length ? p.imgs : [p.img]);
-      modalGallery = { imgs, index: 0 };
-      showSlide(0);
-      modal.classList.remove("hidden");
-      modal.setAttribute("aria-hidden", "false");
-    });
-  });
+  // Images (fallback to single cover image)
+  const imgs = (p && Array.isArray(p.imgs) && p.imgs.length) ? p.imgs
+              : (p?.img ? [p.img] : []);
+  modalGallery = { imgs, index: 0 };
+  showSlide(0);
+
+  // Show modal
+  modal.classList.remove("hidden");
+  modal.setAttribute("aria-hidden", "false");
 }
 
-modal.addEventListener("click", (e) => {
-  if (e.target.hasAttribute("data-close") || e.target === modal) closeModal();
-});
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeModal();
-});
 function closeModal(){
+  if (!modal) return;
   modal.classList.add("hidden");
   modal.setAttribute("aria-hidden", "true");
 }
+
+// Buttons + keyboard
+modalPrev?.addEventListener("click", () => showSlide(modalGallery.index - 1));
+modalNext?.addEventListener("click", () => showSlide(modalGallery.index + 1));
+
+document.addEventListener("keydown", (e) => {
+  if (!modal || modal.getAttribute("aria-hidden") === "true") return;
+  if (e.key === "ArrowLeft")  showSlide(modalGallery.index - 1);
+  if (e.key === "ArrowRight") showSlide(modalGallery.index + 1);
+  if (e.key === "Escape")     closeModal();
+});
+
+modal?.addEventListener("click", (e) => {
+  if (e.target.hasAttribute("data-close") || e.target === modal) closeModal();
+});
+
+// ===== Event delegation so clicks work after every render =====
+document.addEventListener("click", (e) => {
+  // Open modal when a project card is clicked
+  const card = e.target.closest("[data-project-id]");
+  if (card) {
+    e.preventDefault();
+    const id = card.getAttribute("data-project-id");
+    const p  = PROJECTS.find(x => x.id === id);
+    if (p) openProjectModal(p);
+    return;
+  }
+});
