@@ -92,7 +92,7 @@ const PROJECTS = [
     summary: "Experimental study on carbon fiber layups, cure cycles, and failure modes.",
     details:
       "Characterized laminate stiffness and strength across layup schedules; prepared coupons and ran tensile/3-point bend tests; analyzed failure surfaces and optimized cure parameters for repeatability.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "front-suspension-2024",
@@ -103,7 +103,7 @@ const PROJECTS = [
     summary: "Double-wishbone geometry with KPI/Scrub/Roll center targets for a student racecar.",
     details:
       "Set kinematic targets, performed camber gain/roll center migration studies; packaged uprights and steering; verified control arms with FEA and generated GD&T drawings for fabrication.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "composite-aerobody",
@@ -114,7 +114,7 @@ const PROJECTS = [
     summary: "Designed molds and built a lightweight aerodynamic body using wet layup/vacuum bagging.",
     details:
       "Created split molds with draft and flanges; selected layup schedule for stiffness/weight; executed vacuum bagging, trim, and bonding; documented process for reproducibility.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "powertrain-2023",
@@ -125,7 +125,7 @@ const PROJECTS = [
     summary: "Concept-to-detail design of a compact drivetrain with simulation-driven gearing.",
     details:
       "Performed ratio/torque trade studies; modeled shafts, bearings, and housings; ran contact and bending checks; created tolerance stacks and manufacturing drawings.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "autonomous-chess-bot",
@@ -136,7 +136,7 @@ const PROJECTS = [
     summary: "Robot identifies the board and moves pieces with a Cartesian gantry and gripper.",
     details:
       "Implemented camera calibration and piece detection; planned legal moves; controlled stepper axes and end-effector; added homing and collision detection for robustness.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "rolex-submariner-model",
@@ -147,7 +147,7 @@ const PROJECTS = [
     summary: "High-fidelity surface model with attention to curvature continuity and detailing.",
     details:
       "Used parametric and freeform features to match references; controlled G2 transitions; created exploded views and renders highlighting crown, bezel, and bracelet links.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "hvac-design",
@@ -158,7 +158,7 @@ const PROJECTS = [
     summary: "Sized ducting and components for airflow, pressure drop, and acoustic targets.",
     details:
       "Calculated loads and flow rates; selected fan/filters; analyzed pressure losses and noise; produced layout drawings and BOM for build.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "machine-learning",
@@ -169,7 +169,7 @@ const PROJECTS = [
     summary: "Prototyped models to classify images and signals supporting engineering tests.",
     details:
       "Preprocessed datasets, trained baseline classifiers, evaluated ROC/PR metrics, and deployed lightweight inference scripts for lab use.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "microfluid-cartridge-reader",
@@ -180,7 +180,7 @@ const PROJECTS = [
     summary: "Compact reader for disposable microfluidic cartridges with optical sensing.",
     details:
       "Designed latching/registration features; integrated LED/photodiode sensing; developed firmware for acquisition; validated repeatability and ease of service.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "bmw-air-intake",
@@ -191,7 +191,7 @@ const PROJECTS = [
     summary: "Additively manufactured intake tooling and components for assembly improvements.",
     details:
       "Modeled intake geometry and fixtures; evaluated print orientation and materials; verified fit and durability; documented process changes for the line.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "bulkhead-design",
@@ -202,7 +202,7 @@ const PROJECTS = [
     summary: "Structural bulkhead with composite layup tailored for stiffness and load paths.",
     details:
       "Ran panel/buckling checks; tuned ply orientations; designed cores and hardpoints; executed layup and cure; inspected and trimmed to spec.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "wec",
@@ -213,7 +213,7 @@ const PROJECTS = [
     summary: "Rapid ideation and prototyping under time constraints; delivered a working demo.",
     details:
       "Defined problem scope, sketched concepts, built a proof-of-concept prototype, and presented results with metrics and failure analysis.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "foldable-skateboard",
@@ -224,7 +224,7 @@ const PROJECTS = [
     summary: "Portable deck with a locking hinge and quick-release trucks.",
     details:
       "Designed hinge/lock geometry, selected materials for stiffness vs weight, validated safety factors, and produced fabrication drawings.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "gravity-car",
@@ -235,7 +235,7 @@ const PROJECTS = [
     summary: "Low-drag gravity racer optimized for mass distribution and wheel alignment.",
     details:
       "Conducted bearing and toe/ camber alignment tests; tuned CG placement; measured run-to-run variance and improved repeatability.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "mouse-surface-modeling",
@@ -246,7 +246,7 @@ const PROJECTS = [
     summary: "Ergonomic mouse shell with continuous curvature and manufacturable splits.",
     details:
       "Captured hand dimensions, created surface patches with G2 continuity, split for tooling, and rendered CMF variants.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "cessna-plane",
@@ -257,7 +257,7 @@ const PROJECTS = [
     summary: "Scaled airframe model for structural layout and weight estimation.",
     details:
       "Defined primary structure, estimated mass properties, created fuselage frames and spar/rib layout; documented assembly strategy.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "lego-car",
@@ -268,7 +268,7 @@ const PROJECTS = [
     summary: "Functional LEGO car with steering and gearing demonstrations.",
     details:
       "Explored gear ratios and Ackermann steering; built and tested modules; shared a small build guide for others.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "pre-engineering",
@@ -279,7 +279,7 @@ const PROJECTS = [
     summary: "Early projects building fundamentals in CAD, fabrication, and testing.",
     details:
       "Completed small mechanisms and fixtures; learned safe machining; practiced drawing standards and tolerance basics.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "nslc",
@@ -290,7 +290,7 @@ const PROJECTS = [
     summary: "Leadership and engineering challenges with cross-disciplinary teams.",
     details:
       "Led brainstorming, divided tasks, coordinated timelines, and presented solutions with data-backed tradeoffs.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   },
   {
     id: "java-game-arcade",
@@ -301,7 +301,7 @@ const PROJECTS = [
     summary: "Mini-games built in Java demonstrating OOP patterns and simple UIs.",
     details:
       "Implemented game loops, input handling, and scoring; organized code with classes/interfaces; added basic asset loading and menus.",
-    links: ["#", "#"],
+    //links: ["#", "#"],
   }
 ];
 
