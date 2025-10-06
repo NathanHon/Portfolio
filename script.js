@@ -325,8 +325,8 @@ function render() {
 
   // dynamic detail: /work/<slug>
   if (base === "work" && parts.length === 2) {
-    app.innerHTML = renderWorkDetail(parts[1]);
-    window.scrollTo(0, 0);
+    app.innerHTML = renderWork(parts[1]); // ← use unified function
+    window.scrollTo(0,0);
     return;
   }
 
