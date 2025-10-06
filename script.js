@@ -1,9 +1,10 @@
-// Simple hash router + content rendering (no frameworks)
+// Simple path router + content rendering (no frameworks)
 const app = document.getElementById("app");
 const yearEl = document.getElementById("year");
-yearEl.textContent = new Date().getFullYear();
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Work Experience items
+// ----------------------- DATA -----------------------
+
 const WORK_ITEMS = [
   {
     slug: "harbinger-product",
@@ -16,9 +17,7 @@ const WORK_ITEMS = [
       • Collaborated with suppliers for DFM feedback and integrated changes into CAD models.<br>
       • Supported product testing by installing instrumentation and analyzing mechanical endurance data.
     `,
-    links: [
-      { label: "Company Website", href: "https://www.harbingermotors.com" }
-    ]
+    links: [{ label: "Company Website", href: "https://www.harbingermotors.com" }]
   },
   {
     slug: "harbinger-powertrain",
@@ -31,9 +30,7 @@ const WORK_ITEMS = [
       • Collaborated cross-functionally with suppliers to review manufacturing feasibility and tolerance analysis.<br>
       • Simulation results directly influenced production-intent design decisions.
     `,
-    links: [
-      { label: "Company Website", href: "https://www.harbingermotors.com" }
-    ]
+    links: [{ label: "Company Website", href: "https://www.harbingermotors.com" }]
   },
   {
     slug: "raytheon",
@@ -46,9 +43,7 @@ const WORK_ITEMS = [
       • Assisted in prototype testing and documentation under AS9100 procedures.<br>
       • Presented mechanical design improvements to senior engineering management.
     `,
-    links: [
-      { label: "Company Website", href: "https://www.rtx.com" }
-    ]
+    links: [{ label: "Company Website", href: "https://www.rtx.com" }]
   },
   {
     slug: "bmw",
@@ -61,9 +56,7 @@ const WORK_ITEMS = [
       • Coordinated supplier feedback sessions and integrated feedback into design revisions.<br>
       • Project resulted in measurable time savings per cycle on the assembly line.
     `,
-    links: [
-      { label: "Company Website", href: "https://www.bmwgroup.com" }
-    ]
+    links: [{ label: "Company Website", href: "https://www.bmwgroup.com" }]
   },
   {
     slug: "swap",
@@ -76,253 +69,102 @@ const WORK_ITEMS = [
       • Performed tolerance stack-ups and GD&T drawings for machined parts.<br>
       • Supported system-level integration and functional testing.
     `,
-    links: [
-      { label: "Company Website", href: "https://www.swaprobotics.com" }
-    ]
+    links: [{ label: "Company Website", href: "https://www.swaprobotics.com" }]
   }
 ];
 
+// NOTE: If some projects don't have links, this code handles it safely.
 const PROJECTS = [
   {
-    id: "carbon-composite-research",
-    title: "Carbon Fiber Composite Research",
-    img: "assets/Picture3.jpg",
-    imgs: ["assets/Picture3.jpg","assets/Picture4.jpg","assets/Picture5.jpg"],
-    tags: ["materials", "testing", "manufacturing"],
-    summary: "Experimental study on carbon fiber layups, cure cycles, and failure modes.",
-    details:
-      "Characterized laminate stiffness and strength across layup schedules; prepared coupons and ran tensile/3-point bend tests; analyzed failure surfaces and optimized cure parameters for repeatability.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "front-suspension-2024",
-    title: "Front Suspension Design (2024)",
-    img: "assets/Picture6.jpg",
-    imgs: ["assets/Picture6.jpg","assets/Picture7.jpg","assets/Picture8.jpg"],
-    tags: ["vehicle dynamics", "CAD", "FEA"],
-    summary: "Double-wishbone geometry with KPI/Scrub/Roll center targets for a student racecar.",
-    details:
-      "Set kinematic targets, performed camber gain/roll center migration studies; packaged uprights and steering; verified control arms with FEA and generated GD&T drawings for fabrication.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "composite-aerobody",
-    title: "Composite Aerobody Manufacturing",
-    img: "assets/p3.jpg",
-    imgs: ["assets/p3.jpg","assets/p4.jpg"],
-    tags: ["composites", "tooling", "process"],
-    summary: "Designed molds and built a lightweight aerodynamic body using wet layup/vacuum bagging.",
-    details:
-      "Created split molds with draft and flanges; selected layup schedule for stiffness/weight; executed vacuum bagging, trim, and bonding; documented process for reproducibility.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "powertrain-2023",
-    title: "Powertrain Design (2023)",
-    img: "assets/Picture9.jpg",
-    imgs: ["assets/Picture9.jpg","assets/Picture11.jpg","assets/Picture12.jpg"],
-    tags: ["drivetrain", "gearing", "analysis"],
-    summary: "Concept-to-detail design of a compact drivetrain with simulation-driven gearing.",
-    details:
-      "Performed ratio/torque trade studies; modeled shafts, bearings, and housings; ran contact and bending checks; created tolerance stacks and manufacturing drawings.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "autonomous-chess-bot",
-    title: "Autonomous Chess Bot",
-    img: "assets/Picture13.jpg",
-    imgs: ["assets/Picture13.jpg","assets/Picture14.jpg","assets/Picture15.jpg"],
-    tags: ["mechatronics", "vision", "controls"],
-    summary: "Robot identifies the board and moves pieces with a Cartesian gantry and gripper.",
-    details:
-      "Implemented camera calibration and piece detection; planned legal moves; controlled stepper axes and end-effector; added homing and collision detection for robustness.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "rolex-submariner-model",
-    title: "Rolex Submariner Model",
-    img: "assets/Picture17.jpg",
-    imgs: ["assets/Picture17.jpg","assets/Picture16.jpg","assets/Picture18.jpg"],
-    tags: ["surface modeling", "CAD", "render"],
-    summary: "High-fidelity surface model with attention to curvature continuity and detailing.",
-    details:
-      "Used parametric and freeform features to match references; controlled G2 transitions; created exploded views and renders highlighting crown, bezel, and bracelet links.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "hvac-design",
-    title: "HVAC Design",
-    img: "assets/Picture20.jpg",
-    imgs: ["assets/Picture20.jpg","assets/Picture19.jpg","assets/Picture21.jpg"],
-    tags: ["thermals", "ducting", "simulation"],
-    summary: "Sized ducting and components for airflow, pressure drop, and acoustic targets.",
-    details:
-      "Calculated loads and flow rates; selected fan/filters; analyzed pressure losses and noise; produced layout drawings and BOM for build.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "machine-learning",
-    title: "Machine Learning",
-    img: "assets/Picture24.jpg",
-    imgs: ["assets/Picture24.jpg","assets/Picture22.jpg","assets/Picture23.jpg"],
-    tags: ["python", "classification", "cv"],
-    summary: "Prototyped models to classify images and signals supporting engineering tests.",
-    details:
-      "Preprocessed datasets, trained baseline classifiers, evaluated ROC/PR metrics, and deployed lightweight inference scripts for lab use.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "microfluid-cartridge-reader",
-    title: "Microfluid Cartridge Reader",
-    img: "assets/Picture27.jpg",
-    imgs: ["assets/Picture27.jpg","assets/Picture28.jpg","assets/Picture26.jpg"],
-    tags: ["biomed", "mechanisms", "electronics"],
-    summary: "Compact reader for disposable microfluidic cartridges with optical sensing.",
-    details:
-      "Designed latching/registration features; integrated LED/photodiode sensing; developed firmware for acquisition; validated repeatability and ease of service.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "bmw-air-intake",
-    title: "BMW Air Intake",
-    img: "assets/p4.jpg",
-    imgs: ["assets/p4.jpg","assets/p5.jpg"],
-    tags: ["manufacturing", "ergonomics", "additive"],
-    summary: "Additively manufactured intake tooling and components for assembly improvements.",
-    details:
-      "Modeled intake geometry and fixtures; evaluated print orientation and materials; verified fit and durability; documented process changes for the line.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "bulkhead-design",
-    title: "Bulkhead Design & Layup",
-    img: "assets/p5.jpg",
-    imgs: ["assets/p5.jpg","assets/p6.jpg"],
-    tags: ["structures", "composites", "FEA"],
-    summary: "Structural bulkhead with composite layup tailored for stiffness and load paths.",
-    details:
-      "Ran panel/buckling checks; tuned ply orientations; designed cores and hardpoints; executed layup and cure; inspected and trimmed to spec.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "wec",
-    title: "Waterloo Engineering Competition",
-    img: "assets/p6.jpg",
-    imgs: ["assets/p6.jpg","assets/p1.jpg"],
-    tags: ["design sprint", "prototype", "team"],
-    summary: "Rapid ideation and prototyping under time constraints; delivered a working demo.",
-    details:
-      "Defined problem scope, sketched concepts, built a proof-of-concept prototype, and presented results with metrics and failure analysis.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "foldable-skateboard",
-    title: "Foldable Skateboard",
+    id: "msa",
+    title: "Maritime Surveillance Aircraft",
     img: "assets/p1.jpg",
-    imgs: ["assets/p1.jpg","assets/p2.jpg"],
-    tags: ["mechanisms", "linkages", "cad"],
-    summary: "Portable deck with a locking hinge and quick-release trucks.",
+    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
+    tags: ["concept", "systems", "cad"],
+    summary: "Concept study and structural layout for a maritime surveillance platform.",
     details:
-      "Designed hinge/lock geometry, selected materials for stiffness vs weight, validated safety factors, and produced fabrication drawings.",
-    //links: ["#", "#"],
+      "Defined mission requirements, performed initial weight estimation, and developed fuselage frames and payload bay hardpoints. Completed aero/propulsion trades and maintenance access considerations.",
+    links: ["#", "#"]
   },
   {
-    id: "gravity-car",
-    title: "Gravity Car",
+    id: "breakerbot",
+    title: "BreakerBot",
     img: "assets/p2.jpg",
-    imgs: ["assets/p2.jpg","assets/p3.jpg"],
-    tags: ["aero", "rolling resistance", "test"],
-    summary: "Low-drag gravity racer optimized for mass distribution and wheel alignment.",
+    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
+    tags: ["robotics", "manufacturing"],
+    summary:
+      "Compact, serviceable combat robot focusing on drivetrain reliability and quick-change modules.",
     details:
-      "Conducted bearing and toe/ camber alignment tests; tuned CG placement; measured run-to-run variance and improved repeatability.",
-    //links: ["#", "#"],
+      "Designed modular armor panels, integrated brushless drivetrain with overload protection, and validated gear train with FEA and benchtop torque testing.",
+    links: ["#", "#"]
   },
   {
-    id: "mouse-surface-modeling",
-    title: "Computer Mouse Surface Modeling",
+    id: "gearbox",
+    title: "Planetary Gearbox",
     img: "assets/p3.jpg",
-    imgs: ["assets/p3.jpg","assets/p4.jpg"],
-    tags: ["industrial design", "ergonomics", "surfacing"],
-    summary: "Ergonomic mouse shell with continuous curvature and manufacturable splits.",
+    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
+    tags: ["cad", "fea"],
+    summary:
+      "Compact planetary set optimized for mass and stiffness using simulation-driven design.",
     details:
-      "Captured hand dimensions, created surface patches with G2 continuity, split for tooling, and rendered CMF variants.",
-    //links: ["#", "#"],
+      "Performed contact and bending stress checks vs. AGMA, ran modal analysis on carrier to prevent mesh-induced resonance, and validated with dye-penetrant inspection.",
+    links: ["#", "#"]
   },
   {
-    id: "cessna-plane",
-    title: "Cessna Plane",
+    id: "truss",
+    title: "Truss Analysis & Optimization",
     img: "assets/p4.jpg",
-    imgs: ["assets/p4.jpg","assets/p5.jpg"],
-    tags: ["aerospace", "cad", "structures"],
-    summary: "Scaled airframe model for structural layout and weight estimation.",
+    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
+    tags: ["structures", "optimization"],
+    summary:
+      "Parametric truss optimizer with buckling and deflection constraints.",
     details:
-      "Defined primary structure, estimated mass properties, created fuselage frames and spar/rib layout; documented assembly strategy.",
-    //links: ["#", "#"],
+      "Implemented penalty method to enforce Euler buckling margins, with sensitivity-based member sizing and manufacturing grouping constraints.",
+    links: ["#", "#"]
   },
   {
-    id: "lego-car",
-    title: "Lego Car Design",
+    id: "pneumatic-brake",
+    title: "Pneumatic Brake Module",
     img: "assets/p5.jpg",
-    imgs: ["assets/p5.jpg","assets/p6.jpg"],
-    tags: ["concept", "mechanisms", "fun"],
-    summary: "Functional LEGO car with steering and gearing demonstrations.",
+    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
+    tags: ["mechatronics", "safety"],
+    summary:
+      "Fail-safe pneumatic brake module with diagnostic telemetry and overpressure protection.",
     details:
-      "Explored gear ratios and Ackermann steering; built and tested modules; shared a small build guide for others.",
-    //links: ["#", "#"],
+      "Sized valves and reservoir per duty cycle, implemented leak-down detection, and added redundant relief per ISO 4414 guidance.",
+    links: ["#", "#"]
   },
   {
-    id: "pre-engineering",
-    title: "Pre-Engineering",
+    id: "mode-converter",
+    title: "Microbend Mode Converter",
     img: "assets/p6.jpg",
-    imgs: ["assets/p6.jpg","assets/p1.jpg"],
-    tags: ["foundations", "shop", "projects"],
-    summary: "Early projects building fundamentals in CAD, fabrication, and testing.",
+    imgs: ["assets/p1.jpg", "assets/p1b.jpg", "assets/p1c.jpg"],
+    tags: ["photonics", "test"],
+    summary:
+      "Fiber microbend mode converter for lab validation and low-cost manufacturing.",
     details:
-      "Completed small mechanisms and fixtures; learned safe machining; practiced drawing standards and tolerance basics.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "nslc",
-    title: "NSLC",
-    img: "assets/p1.jpg",
-    imgs: ["assets/p1.jpg","assets/p2.jpg"],
-    tags: ["leadership", "team", "presentation"],
-    summary: "Leadership and engineering challenges with cross-disciplinary teams.",
-    details:
-      "Led brainstorming, divided tasks, coordinated timelines, and presented solutions with data-backed tradeoffs.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "java-game-arcade",
-    title: "Java Game Arcade",
-    img: "assets/p2.jpg",
-    imgs: ["assets/p2.jpg","assets/p3.jpg"],
-    tags: ["java", "oop", "ui"],
-    summary: "Mini-games built in Java demonstrating OOP patterns and simple UIs.",
-    details:
-      "Implemented game loops, input handling, and scoring; organized code with classes/interfaces; added basic asset loading and menus.",
-    //links: ["#", "#"],
+      "Built adjustable microbend fixture with sub-50 µm repeatability, wrote Python scripts for mode purity quantification, and documented process for transfer to production.",
+    links: ["#", "#"]
   }
 ];
 
-// Routing
+// ----------------------- ROUTER -----------------------
+
 const routes = {
   portfolio: renderPortfolio,
   work: renderWork,
   resume: renderResume,
-  about: renderAbout,
+  about: renderAbout
 };
 
 function currentRoute() {
   // Path-based routing from the site root (user site)
-  const path = location.pathname.replace(/^\/+|\/+$/g, ""); // trim leading/trailing slashes
-  // With a user site, there's no repo subfolder to strip
-  const clean = path; 
+  const path = location.pathname.replace(/^\/+|\/+$/g, ""); // trim slashes
+  const clean = path;
   return clean || "portfolio"; // default page at root "/"
 }
 
 function splitRoute() {
-  // returns { base, parts } e.g. "work/bmw" -> { base:"work", parts:["work","bmw"] }
   const raw = currentRoute();
   const parts = raw.split("/").filter(Boolean);
   return { base: parts[0] || "portfolio", parts };
@@ -330,7 +172,7 @@ function splitRoute() {
 
 function setActiveNav() {
   const curr = currentRoute();
-  document.querySelectorAll("[data-route]").forEach(a => {
+  document.querySelectorAll("[data-route]").forEach((a) => {
     const target = a.getAttribute("href").replace(/^\/+|\/+$/g, "") || "portfolio";
     if (curr === target || curr.startsWith(target + "/")) a.classList.add("active");
     else a.classList.remove("active");
@@ -341,29 +183,30 @@ function render() {
   setActiveNav();
   const { base, parts } = splitRoute();
 
-  // Toggle full-width container for resume only
   if (base === "resume") app.classList.add("wide");
   else app.classList.remove("wide");
 
-  // dynamic detail: #/work/<slug>
+  // dynamic detail: /work/<slug>
   if (base === "work" && parts.length === 2) {
     app.innerHTML = renderWorkDetail(parts[1]);
-    window.scrollTo(0,0);
-    bindProjectClicks();
+    window.scrollTo(0, 0);
     return;
   }
 
   const view = routes[base] || renderPortfolio;
   app.innerHTML = view();
-  bindProjectClicks();
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
+window.addEventListener("popstate", render);
+window.addEventListener("load", render);
+
+// Intercept internal links so navigation uses History API (no reload)
 document.addEventListener("click", (e) => {
   const a = e.target.closest("a");
   if (!a) return;
 
-  // Handle old hash links too (just in case any remain)
+  // Convert any leftover hash links like "#/work/slug"
   if (a.getAttribute("href")?.startsWith("#/")) {
     e.preventDefault();
     const clean = a.getAttribute("href").replace(/^#\//, "/");
@@ -372,7 +215,7 @@ document.addEventListener("click", (e) => {
     return;
   }
 
-  // Handle root-relative links like /work, /work/slug, /about, etc.
+  // Root-relative internal links: /, /work, /work/slug, /about, /resume
   if (a.origin === location.origin && a.pathname.startsWith("/")) {
     const internal = /^\/(work(\/[^\/]+)?|about|resume|portfolio)?\/?$/.test(a.pathname);
     if (internal && !a.target) {
@@ -383,11 +226,9 @@ document.addEventListener("click", (e) => {
   }
 });
 
-window.addEventListener("popstate", render); // back/forward navigation
-window.addEventListener("load", render);
+// ----------------------- VIEWS -----------------------
 
-// Views
-function pageTitle(title, subtitle="") {
+function pageTitle(title, subtitle = "") {
   return `
     <div class="page-title">
       <h1>${title}</h1>
@@ -405,8 +246,9 @@ function renderPortfolio() {
 }
 
 function renderWork() {
-  const cards = WORK_ITEMS.map(w => `
-    <article class="card">
+  const cards = WORK_ITEMS.map(
+    (w) => `
+    <article class="card" data-project-id="">
       <a href="/work/${w.slug}">
         <div class="card-media"><img src="${w.img}" alt="${w.title}"></div>
         <div class="card-body">
@@ -415,7 +257,8 @@ function renderWork() {
         </div>
       </a>
     </article>
-  `).join("");
+  `
+  ).join("");
 
   return `
     ${pageTitle("Work Experience","Selected roles and projects")}
@@ -424,7 +267,7 @@ function renderWork() {
 }
 
 function renderWorkDetail(slug) {
-  const item = WORK_ITEMS.find(w => w.slug === slug);
+  const item = WORK_ITEMS.find((w) => w.slug === slug);
   if (!item) {
     return `
       ${pageTitle("Work Experience")}
@@ -433,10 +276,10 @@ function renderWorkDetail(slug) {
     `;
   }
 
-  const links = (item.links || []).map(l => `
-    <a class="pill" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>
-  `).join("");
-  
+  const links = (item.links || []).map(
+    (l) => `<a class="pill" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`
+  ).join("");
+
   return `
     ${pageTitle(item.title)}
     <div class="grid" style="grid-template-columns: 1fr; gap:24px">
@@ -449,7 +292,7 @@ function renderWorkDetail(slug) {
         <p>${item.details}</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
           ${links}
-          <a class="pill" href="#/work">← Back to Work</a>
+          <a class="pill" href="/work">← Back to Work</a>
         </div>
       </div>
     </div>
@@ -482,7 +325,6 @@ function renderResume() {
   `;
 }
 
-
 function renderAbout() {
   return `
     ${pageTitle("About")}
@@ -510,7 +352,7 @@ function renderAbout() {
 }
 
 function cardHTML(p) {
-  const tags = p.tags.map(t => `<span class="tag">${t}</span>`).join("");
+  const tags = (p.tags || []).map((t) => `<span class="tag">${t}</span>`).join("");
   return `
     <article class="card" data-project-id="${p.id}">
       <div class="card-media"><img src="${p.img}" alt="${p.title}"></div>
@@ -523,7 +365,8 @@ function cardHTML(p) {
   `;
 }
 
-// ===================== Modal controls (robust) =====================
+// ----------------------- MODAL (robust) -----------------------
+
 const modal       = document.getElementById("modal");
 const modalTitle  = document.getElementById("modal-title");
 const modalImg    = document.getElementById("modal-img");
@@ -536,12 +379,8 @@ const modalDots   = document.getElementById("modal-dots");
 
 let modalGallery = { imgs: [], index: 0 };
 
-function safeLink(p, i) {
-  // return a usable href or "#"
-  if (p && Array.isArray(p.links) && typeof p.links[i] === "string" && p.links[i].trim() !== "") {
-    return p.links[i];
-  }
-  return "#";
+function safeHref(x) {
+  return (typeof x === "string" && x.trim() !== "") ? x : "#";
 }
 
 function renderDots() {
@@ -557,7 +396,7 @@ function renderDots() {
 
 function showSlide(i) {
   if (!modalGallery.imgs.length || !modalImg) return;
-  if (i < 0) i = modalGallery.imgs.length - 1;   // wrap
+  if (i < 0) i = modalGallery.imgs.length - 1;
   if (i >= modalGallery.imgs.length) i = 0;
   modalGallery.index = i;
   modalImg.src = modalGallery.imgs[i];
@@ -566,16 +405,21 @@ function showSlide(i) {
 
 function openProjectModal(p) {
   if (!modal) return;
+
   // Title / text
   if (modalTitle) modalTitle.textContent = p?.title || "";
   if (modalText)  modalText.textContent  = p?.details || "";
 
-  // Links (guard against missing arrays)
-  if (modalLink1) modalLink1.href = safeLink(p, 0);
-  if (modalLink2) modalLink2.href = safeLink(p, 1);
+  // Links (support array of strings OR array of {href})
+  const l0 = Array.isArray(p?.links) ? p.links[0] : undefined;
+  const l1 = Array.isArray(p?.links) ? p.links[1] : undefined;
+  const href0 = typeof l0 === "string" ? l0 : (l0?.href || "#");
+  const href1 = typeof l1 === "string" ? l1 : (l1?.href || "#");
+  if (modalLink1) modalLink1.href = safeHref(href0);
+  if (modalLink2) modalLink2.href = safeHref(href1);
 
-  // Images (fallback to single cover image)
-  const imgs = (p && Array.isArray(p.imgs) && p.imgs.length) ? p.imgs
+  // Images (fallback to single cover)
+  const imgs = (Array.isArray(p?.imgs) && p.imgs.length) ? p.imgs
               : (p?.img ? [p.img] : []);
   modalGallery = { imgs, index: 0 };
   showSlide(0);
@@ -591,10 +435,11 @@ function closeModal(){
   modal.setAttribute("aria-hidden", "true");
 }
 
-// Buttons + keyboard
+// Prev / Next buttons
 modalPrev?.addEventListener("click", () => showSlide(modalGallery.index - 1));
 modalNext?.addEventListener("click", () => showSlide(modalGallery.index + 1));
 
+// Keyboard
 document.addEventListener("keydown", (e) => {
   if (!modal || modal.getAttribute("aria-hidden") === "true") return;
   if (e.key === "ArrowLeft")  showSlide(modalGallery.index - 1);
@@ -602,19 +447,20 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape")     closeModal();
 });
 
+// Close when clicking backdrop or Close button
 modal?.addEventListener("click", (e) => {
   if (e.target.hasAttribute("data-close") || e.target === modal) closeModal();
 });
 
-// ===== Event delegation so clicks work after every render =====
+// Open modal via event delegation (works after every render)
 document.addEventListener("click", (e) => {
-  // Open modal when a project card is clicked
   const card = e.target.closest("[data-project-id]");
   if (card) {
-    e.preventDefault();
+    // Only open modal on portfolio cards (not work links)
     const id = card.getAttribute("data-project-id");
-    const p  = PROJECTS.find(x => x.id === id);
+    const p  = PROJECTS.find((x) => x.id === id);
     if (p) openProjectModal(p);
-    return;
   }
 });
+
+// ----------------------- END -----------------------
