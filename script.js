@@ -329,7 +329,12 @@ function render() {
     window.scrollTo(0,0);
     return;
   }
-
+  if (base === "work") {
+    app.innerHTML = renderWork();           // list
+    window.scrollTo(0,0);
+    return;
+  }
+  
   const view = routes[base] || renderPortfolio;
   app.innerHTML = view();
   window.scrollTo(0, 0);
