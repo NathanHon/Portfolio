@@ -2,6 +2,10 @@
 const app = document.getElementById("app");
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+function asset(p) {
+  if (!p) return "";
+  return p.startsWith("/") ? p : "/" + p.replace(/^\/+/, "");
+}
 
 // ----------------------- DATA -----------------------
 
@@ -378,57 +382,59 @@ function renderPortfolio() {
   `;
 }
 
-function renderWork() {
-  const cards = WORK_ITEMS.map(
-    (w) => `
-    <article class="card" data-project-id="">
+function renderWork(slug) {
+  // DETAIL VIEW
+  if (slug) {
+    const item = WORK_ITEMS.find(w => w.slug === slug);
+    if (!item) {
+      return `
+        ${pageTitle("Work Experience")}
+        <p class="prose">Sorry, that work item was not found.</p>
+        <p><a class="pill" href="/work">Back to Work Experience</a></p>
+      `;
+    }
+
+    const links = (item.links || []).map(l => `
+      <a class="pill" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>
+    `).join("");
+
+    return `
+      ${pageTitle(item.title)}
+      <div class="grid" style="grid-template-columns: 1fr; gap:24px">
+        <div class="card" style="max-width:100%; margin-bottom: 4px;">
+          <div class="card-media" style="aspect-ratio:16/9; background:#fff; display:flex; align-items:center; justify-content:center;">
+            <img src="${asset(item.img)}" alt="${item.title}" style="width:100%; height:100%; object-fit:contain; background:#fff;">
+          </div>
+        </div>
+        <div class="prose">
+          <p>${item.details}</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+            ${links}
+            <a class="pill" href="/work">← Back to Work</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // LIST VIEW
+  const cards = WORK_ITEMS.map(w => `
+    <article class="card">
       <a href="/work/${w.slug}">
-        <div class="card-media"><img src="${w.img}" alt="${w.title}"></div>
+        <div class="card-media">
+          <img src="${asset(w.img)}" alt="${w.title}">
+        </div>
         <div class="card-body">
           <h3>${w.title}</h3>
           <p>${w.summary}</p>
         </div>
       </a>
     </article>
-  `
-  ).join("");
+  `).join("");
 
   return `
     ${pageTitle("Work Experience","Selected roles and projects")}
     <div class="grid" style="margin-top:4px">${cards}</div>
-  `;
-}
-
-function renderWorkDetail(slug) {
-  const item = WORK_ITEMS.find((w) => w.slug === slug);
-  if (!item) {
-    return `
-      ${pageTitle("Work Experience")}
-      <p class="prose">Sorry, that work item was not found.</p>
-      <p><a class="pill" href="/work">Back to Work Experience</a></p>
-    `;
-  }
-
-  const links = (item.links || []).map(
-    (l) => `<a class="pill" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`
-  ).join("");
-
-  return `
-    ${pageTitle(item.title)}
-    <div class="grid" style="grid-template-columns: 1fr; gap:24px">
-      <div class="card">
-        <div class="card-media" style="aspect-ratio:16/9">
-          <img src="${item.img}" alt="${item.title}">
-        </div>
-      </div>
-      <div class="prose">
-        <p>${item.details}</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
-          ${links}
-          <a class="pill" href="/work">← Back to Work</a>
-        </div>
-      </div>
-    </div>
   `;
 }
 
@@ -488,7 +494,7 @@ function cardHTML(p) {
   const tags = (p.tags || []).map((t) => `<span class="tag">${t}</span>`).join("");
   return `
     <article class="card" data-project-id="${p.id}">
-      <div class="card-media"><img src="${p.img}" alt="${p.title}"></div>
+     <div class="card-media"><img src="${asset(p.img)}" alt="${p.title}"></div>
       <div class="card-body">
         <div class="tags">${tags}</div>
         <h3>${p.title}</h3>
@@ -532,7 +538,7 @@ function showSlide(i) {
   if (i < 0) i = modalGallery.imgs.length - 1;
   if (i >= modalGallery.imgs.length) i = 0;
   modalGallery.index = i;
-  modalImg.src = modalGallery.imgs[i];
+  modalImg.src = asset(modalGallery.imgs[i]);
   renderDots();
 }
 
@@ -552,8 +558,8 @@ function openProjectModal(p) {
   if (modalLink2) modalLink2.href = safeHref(href1);
 
   // Images (fallback to single cover)
-  const imgs = (Array.isArray(p?.imgs) && p.imgs.length) ? p.imgs
-              : (p?.img ? [p.img] : []);
+  const imgs = (Array.isArray(p?.imgs) && p.imgs.length) ? p.imgs.map(asset)
+             : (p?.img ? [asset(p.img)] : []);
   modalGallery = { imgs, index: 0 };
   showSlide(0);
 
