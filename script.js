@@ -88,8 +88,8 @@ const PROJECTS = [
   {
     id: "front-suspension-2024",
     title: "Front Suspension Design (2024)",
-    img: "assets/Picture30.jpg",
-    imgs: ["assets/Picture30.jpg","assets/Picture6.jpg","assets/Picture7.jpg","assets/Picture8.jpg"],
+    img: "assets/Picture55.jpg",
+    imgs: ["assets/Picture55.jpg","assets/Picture30.jpg","assets/Picture6.jpg","assets/Picture7.jpg","assets/Picture8.jpg""assets/Picture54.jpg","assets/Picture53.jpg"],
     tags: ["vehicle dynamics", "CAD", "FEA"],
     summary: "Double-wishbone geometry with KPI/Scrub/Roll center targets for a student racecar.",
     details:
