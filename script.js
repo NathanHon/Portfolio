@@ -229,17 +229,6 @@ const PROJECTS = [
     //links: ["#", "#"],
   },
   {
-    id: "gravity-car",
-    title: "Gravity Car",
-    img: "assets/p2.jpg",
-    imgs: ["assets/p2.jpg","assets/p3.jpg"],
-    tags: ["aero", "rolling resistance", "test"],
-    summary: "Low-drag gravity racer optimized for mass distribution and wheel alignment.",
-    details:
-      "Conducted bearing and toe/ camber alignment tests; tuned CG placement; measured run-to-run variance and improved repeatability.",
-    //links: ["#", "#"],
-  },
-  {
     id: "mouse-surface-modeling",
     title: "Computer Mouse Surface Modeling",
     img: "assets/p3.jpg",
@@ -270,17 +259,6 @@ const PROJECTS = [
     summary: "Functional LEGO car with steering and gearing demonstrations.",
     details:
       "Explored gear ratios and Ackermann steering; built and tested modules; shared a small build guide for others.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "pre-engineering",
-    title: "Pre-Engineering",
-    img: "assets/p6.jpg",
-    imgs: ["assets/p6.jpg","assets/p1.jpg"],
-    tags: ["foundations", "shop", "projects"],
-    summary: "Early projects building fundamentals in CAD, fabrication, and testing.",
-    details:
-      "Completed small mechanisms and fixtures; learned safe machining; practiced drawing standards and tolerance basics.",
     //links: ["#", "#"],
   },
 ];
