@@ -64,10 +64,21 @@ const WORK_ITEMS = [
 
 const PROJECTS = [
   {
+    id: "suspension-2025",
+    title: "Suspension Design (2025)",
+    img: "assets/Picture30.jpg",
+    imgs: ["assets/Picture30.jpg","assets/Picture6.jpg","assets/Picture7.jpg","assets/Picture8.jpg"],
+    tags: ["vehicle dynamics", "CAD", "FEA"],
+    summary: "Double-wishbone geometry with KPI/Scrub/Roll center targets for a student racecar.",
+    details:
+      "Set kinematic targets, performed camber gain/roll center migration studies; packaged uprights and steering; verified control arms with FEA and generated GD&T drawings for fabrication.",
+    //links: ["#", "#"],
+  },
+  {
     id: "carbon-composite-research",
     title: "Carbon Fiber Composite Research",
     img: "assets/Picture3.jpg",
-    imgs: ["assets/Picture3.jpg","assets/Picture4.jpg","assets/Picture5.jpg"],
+    imgs: ["assets/Picture3.jpg","assets/Picture4.jpg","assets/Picture5.jpg","assets/Picture48.jpg"],
     tags: ["materials", "testing", "manufacturing"],
     summary: "Experimental study on carbon fiber layups, cure cycles, and failure modes.",
     details:
@@ -77,8 +88,8 @@ const PROJECTS = [
   {
     id: "front-suspension-2024",
     title: "Front Suspension Design (2024)",
-    img: "assets/Picture6.jpg",
-    imgs: ["assets/Picture6.jpg","assets/Picture7.jpg","assets/Picture8.jpg"],
+    img: "assets/Picture30.jpg",
+    imgs: ["assets/Picture30.jpg","assets/Picture6.jpg","assets/Picture7.jpg","assets/Picture8.jpg"],
     tags: ["vehicle dynamics", "CAD", "FEA"],
     summary: "Double-wishbone geometry with KPI/Scrub/Roll center targets for a student racecar.",
     details:
@@ -88,8 +99,8 @@ const PROJECTS = [
   {
     id: "composite-aerobody",
     title: "Composite Aerobody Manufacturing",
-    img: "assets/p3.jpg",
-    imgs: ["assets/p3.jpg","assets/p4.jpg"],
+    img: "assets/Picture24.jpg",
+    imgs: ["assets/Picture24.jpg","assets/Picture0.jpg","assets/Picture2.jpg","assets/Picture1.jpg","assets/Picture39.jpg"],
     tags: ["composites", "tooling", "process"],
     summary: "Designed molds and built a lightweight aerodynamic body using wet layup/vacuum bagging.",
     details:
@@ -99,12 +110,23 @@ const PROJECTS = [
   {
     id: "powertrain-2023",
     title: "Powertrain Design (2023)",
-    img: "assets/Picture9.jpg",
-    imgs: ["assets/Picture9.jpg","assets/Picture11.jpg","assets/Picture12.jpg"],
+    img: "assets/Picture31.jpg",
+    imgs: ["assets/Picture31.jpg","assets/Picture40.jpg","assets/Picture9.jpg","assets/Picture11.jpg","assets/Picture12.jpg"],
     tags: ["drivetrain", "gearing", "analysis"],
     summary: "Concept-to-detail design of a compact drivetrain with simulation-driven gearing.",
     details:
       "Performed ratio/torque trade studies; modeled shafts, bearings, and housings; ran contact and bending checks; created tolerance stacks and manufacturing drawings.",
+    //links: ["#", "#"],
+  },
+    {
+    id: "midnightsun-susp",
+    title: "Midnight Sun Mechanical Design",
+    img: "assets/Picture29.jpg",
+    imgs: ["assets/Picture29.jpg"],
+    tags: ["composites", "tooling", "process"],
+    summary: "Designed molds and built a lightweight aerodynamic body using wet layup/vacuum bagging.",
+    details:
+      "Created split molds with draft and flanges; selected layup schedule for stiffness/weight; executed vacuum bagging, trim, and bonding; documented process for reproducibility.",
     //links: ["#", "#"],
   },
   {
@@ -144,7 +166,7 @@ const PROJECTS = [
     id: "machine-learning",
     title: "Machine Learning",
     img: "assets/Picture24.jpg",
-    imgs: ["assets/Picture24.jpg","assets/Picture22.jpg","assets/Picture23.jpg"],
+    imgs: ["assets/Picture24.jpg","assets/Picture22.jpg","assets/Picture22.jpg","assets/Picture23.jpg","assets/Picture46.jpg"],
     tags: ["python", "classification", "cv"],
     summary: "Prototyped models to classify images and signals supporting engineering tests.",
     details:
@@ -165,8 +187,8 @@ const PROJECTS = [
   {
     id: "bmw-air-intake",
     title: "BMW Air Intake",
-    img: "assets/p4.jpg",
-    imgs: ["assets/p4.jpg","assets/p5.jpg"],
+    img: "assets/Picture34.jpg",
+    imgs: ["assets/Picture34.jpg","assets/Picture32.jpg","assets/Picture33.jpg"],
     tags: ["manufacturing", "ergonomics", "additive"],
     summary: "Additively manufactured intake tooling and components for assembly improvements.",
     details:
@@ -176,8 +198,8 @@ const PROJECTS = [
   {
     id: "bulkhead-design",
     title: "Bulkhead Design & Layup",
-    img: "assets/p5.jpg",
-    imgs: ["assets/p5.jpg","assets/p6.jpg"],
+    img: "assets/Picture43.jpg",
+    imgs: ["assets/Picture43.jpg","assets/Picture37.jpg"],
     tags: ["structures", "composites", "FEA"],
     summary: "Structural bulkhead with composite layup tailored for stiffness and load paths.",
     details:
@@ -188,7 +210,7 @@ const PROJECTS = [
     id: "wec",
     title: "Waterloo Engineering Competition",
     img: "assets/p6.jpg",
-    imgs: ["assets/p6.jpg","assets/p1.jpg"],
+    imgs: ["assets/Picture45.jpg","assets/p1.jpg"],
     tags: ["design sprint", "prototype", "team"],
     summary: "Rapid ideation and prototyping under time constraints; delivered a working demo.",
     details:
@@ -259,17 +281,6 @@ const PROJECTS = [
     summary: "Early projects building fundamentals in CAD, fabrication, and testing.",
     details:
       "Completed small mechanisms and fixtures; learned safe machining; practiced drawing standards and tolerance basics.",
-    //links: ["#", "#"],
-  },
-  {
-    id: "nslc",
-    title: "NSLC",
-    img: "assets/p1.jpg",
-    imgs: ["assets/p1.jpg","assets/p2.jpg"],
-    tags: ["leadership", "team", "presentation"],
-    summary: "Leadership and engineering challenges with cross-disciplinary teams.",
-    details:
-      "Led brainstorming, divided tasks, coordinated timelines, and presented solutions with data-backed tradeoffs.",
     //links: ["#", "#"],
   },
   {
