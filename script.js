@@ -207,17 +207,6 @@ const PROJECTS = [
     //links: ["#", "#"],
   },
   {
-    id: "wec",
-    title: "Waterloo Engineering Competition",
-    img: "assets/p6.jpg",
-    imgs: ["assets/Picture45.jpg","assets/p1.jpg"],
-    tags: ["design sprint", "prototype", "team"],
-    summary: "Rapid ideation and prototyping under time constraints; delivered a working demo.",
-    details:
-      "Defined problem scope, sketched concepts, built a proof-of-concept prototype, and presented results with metrics and failure analysis.",
-    //links: ["#", "#"],
-  },
-  {
     id: "foldable-skateboard",
     title: "Foldable Skateboard",
     img: "assets/Picture52.jpg",
