@@ -283,17 +283,6 @@ const PROJECTS = [
       "Completed small mechanisms and fixtures; learned safe machining; practiced drawing standards and tolerance basics.",
     //links: ["#", "#"],
   },
-  {
-    id: "java-game-arcade",
-    title: "Java Game Arcade",
-    img: "assets/p2.jpg",
-    imgs: ["assets/p2.jpg","assets/p3.jpg"],
-    tags: ["java", "oop", "ui"],
-    summary: "Mini-games built in Java demonstrating OOP patterns and simple UIs.",
-    details:
-      "Implemented game loops, input handling, and scoring; organized code with classes/interfaces; added basic asset loading and menus.",
-    //links: ["#", "#"],
-  }
 ];
 
 // ----------------------- ROUTER -----------------------
