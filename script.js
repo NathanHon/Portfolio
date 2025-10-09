@@ -220,8 +220,8 @@ const PROJECTS = [
   {
     id: "foldable-skateboard",
     title: "Foldable Skateboard",
-    img: "assets/p1.jpg",
-    imgs: ["assets/p1.jpg","assets/p2.jpg"],
+    img: "assets/Picture52.jpg",
+    imgs: ["assets/Picture52.jpg"],
     tags: ["mechanisms", "linkages", "cad"],
     summary: "Portable deck with a locking hinge and quick-release trucks.",
     details:
@@ -231,8 +231,8 @@ const PROJECTS = [
   {
     id: "mouse-surface-modeling",
     title: "Computer Mouse Surface Modeling",
-    img: "assets/p3.jpg",
-    imgs: ["assets/p3.jpg","assets/p4.jpg"],
+    img: "assets/Picture49.jpg",
+    imgs: ["assets/Picture49.jpg"],
     tags: ["industrial design", "ergonomics", "surfacing"],
     summary: "Ergonomic mouse shell with continuous curvature and manufacturable splits.",
     details:
@@ -241,9 +241,9 @@ const PROJECTS = [
   },
   {
     id: "cessna-plane",
-    title: "Cessna Plane",
-    img: "assets/p4.jpg",
-    imgs: ["assets/p4.jpg","assets/p5.jpg"],
+    title: "Cessna 172 Plane",
+    img: "assets/Picture50.jpg",
+    imgs: ["assets/Picture50.jpg"],
     tags: ["aerospace", "cad", "structures"],
     summary: "Scaled airframe model for structural layout and weight estimation.",
     details:
@@ -253,8 +253,8 @@ const PROJECTS = [
   {
     id: "lego-car",
     title: "Lego Car Design",
-    img: "assets/p5.jpg",
-    imgs: ["assets/p5.jpg","assets/p6.jpg"],
+    img: "assets/Picture51.jpg",
+    imgs: ["assets/Picture51.jpg"],
     tags: ["concept", "mechanisms", "fun"],
     summary: "Functional LEGO car with steering and gearing demonstrations.",
     details:
