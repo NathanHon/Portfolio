@@ -69,7 +69,7 @@ const PROJECTS = [
     img: "assets/Picture62.jpg",
     imgs: ["assets/Picture62.jpg","assets/Picture60.jpg","assets/Picture61.jpg"],
     tags: ["vehicle dynamics", "CAD", "FEA"],
-    summary: "Double-wishbone geometry with KPI/Scrub/Roll center targets for a student racecar.",
+    summary: "Complete suspension and steering design and manufacturing for a student offroading racecar.",
     details:
       "Set kinematic targets, performed camber gain/roll center migration studies; packaged uprights and steering; verified control arms with FEA and generated GD&T drawings for fabrication.",
     //links: ["#", "#"],
