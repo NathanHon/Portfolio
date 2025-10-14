@@ -405,7 +405,7 @@ function renderWork(slug) {
   `).join("");
 
   return `
-    ${pageTitle("Work Experience","Previous roles and projects")}
+    ${pageTitle("Work Experience","Previous roles and experiences")}
     <div class="grid work-list" style="margin-top:4px">${cards}</div>
   `;
 }
